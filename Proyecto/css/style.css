@@ -103,16 +103,16 @@ h2 {
 }
 
 .btn {
-    color: #FF6F61;
+    color: #2aff00;
     background: #ffffff;
-    border: 1px solid #FF6F61;
+    border: 1px solid #2aff00;
 }
 
 .btn:hover,
 .btn:active,
 .btn:focus {
     color: #ffffff;
-    background: #FF6F61;
+    background: #2aff00;
     box-shadow: none;
 }
 
@@ -530,7 +530,7 @@ h2 {
     height: 100%;
     display: flex;
     align-items: center;
-    background: rgba(255, 111, 97, .7);
+    background: 2aff00;
     transition: all 0.3s;
     opacity: 0;
 }
@@ -780,7 +780,7 @@ h2 {
     font-size: 16px;
     text-align: center;
     color: #ffffff;
-    background: #FF6F61;
+    background: #2aff00;
     border: 1px solid #ffffff;
     border-radius: 4px;
     transition: all .3s;
@@ -796,9 +796,9 @@ h2 {
 }
 
 .product-item .product-image .product-action a:hover {
-    color: #FF6F61;
+    color: #2aff00;
     background: #ffffff;
-    border: 1px solid #FF6F61;
+    border: 1px solid #2aff00;
 }
 
 .product-item .product-price {
@@ -808,7 +808,7 @@ h2 {
 }
 
 .product-item:hover .product-price {
-    background: #FF6F61;
+    background: #2aff00;
 }
 
 .product-item .product-price h3 {
@@ -825,12 +825,12 @@ h2 {
     float: right;
     border: none;
     color: #000000;
-    background: #FF6F61;
+    background: #2aff00;
 }
 
 .product-item:hover .product-price .btn,
 .product-item .product-price .btn:hover {
-    color: #FF6F61;
+    color: #2aff00;
     background: #ffffff;
 }
 
