@@ -415,13 +415,11 @@ h2 {
 .header .navbar {
     padding: 0;
     height: 100%;
-    max-height: 400px;
+    max-height: 233px;
+    width:100%;
     overflow: hidden;
     background: #111111 !important;
-    border-right: 4px double #3cc022; 
-    border-left: 4px double #3cc022;
-    border-top: 4px double #3cc022;
-    border-bottom: 4px double #3cc022
+    border: 3px solid #3cc022;
 }
 
 .header .navbar-nav {
@@ -431,7 +429,7 @@ h2 {
 
 .header .navbar li {
     padding: 0 30px;
-    border-bottom: 1px solid #f3f6ff;
+    border-bottom: 1px solid #2c6e1e;
 }
 
 .header .navbar li:last-child {
