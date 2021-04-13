@@ -2217,7 +2217,7 @@ h2 {
 .footer {
     position: relative;
     padding: 30px 0 0 0;
-    background: #ffffff;
+    background: #000000;
 }
 
 .footer .footer-widget {
@@ -2230,6 +2230,7 @@ h2 {
     font-size: 25px;
     white-space: nowrap;
     margin-bottom: 20px; 
+    color: #ffffff;
 }
 
 .footer .footer-widget ul {
@@ -2247,11 +2248,12 @@ h2 {
 }
 
 .footer .footer-widget ul li a {
-    color: #353535;
+    color: #3cc022;
     white-space: nowrap;
     display: block;
     line-height: 23px;
     transition: all .3s;
+    
 }
 
 .footer .footer-widget ul li a::before {
@@ -2274,6 +2276,7 @@ h2 {
 .footer .contact-info p {
     margin-bottom: 10px;
     font-size: 16px;
+    color: #3cc022;
 }
 
 .footer .contact-info p i {
@@ -2293,8 +2296,8 @@ h2 {
     padding: 6px 0;
     text-align: center;
     font-size: 18px;
-    color: #353535;
-    border: 1px solid #353535;
+    color: #2e7932;
+    border: 1px solid #3cc022;
     border-radius: 4px;
     transition: all .3s;
 }
@@ -2348,6 +2351,7 @@ h2 {
     font-size: 18px;
     font-weight: 400;
     line-height: 22px;
+    color: white;
 }
 
 .footer .payment-method img,
@@ -2366,7 +2370,7 @@ h2 {
 }
 
 .footer-bottom .copyright {
-    text-align: left;
+    text-align: lef
 }
 
 .footer-bottom .template-by {
