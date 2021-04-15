@@ -148,6 +148,9 @@ h2 {
     right: 15px;
     opacity: 1;
 }
+.slick-slide img{
+    border: dotted #3cc022;
+}
 
 .normal-slider .slick-prev:hover,
 .normal-slider .slick-prev:focus,
