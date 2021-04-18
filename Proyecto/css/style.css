@@ -129,6 +129,7 @@ h2 {
     transition: .5s;
     background: rgb(52 110 45 / 70%);
     border-radius: 4px;
+    
 }
 
 .normal-slider .slick-prev {
@@ -148,9 +149,7 @@ h2 {
     right: 15px;
     opacity: 1;
 }
-.slick-slide img{
-    border: dotted #3cc022;
-}
+
 
 .normal-slider .slick-prev:hover,
 .normal-slider .slick-prev:focus,
@@ -323,6 +322,7 @@ h2 {
 
 .bottom-bar .logo a img {
     max-height: 110px;
+    padding-left: 12%;
 }
 
 .bottom-bar .search {
@@ -461,6 +461,7 @@ h2 {
 .header-slider {
     position: relative;
     width: 100%;
+    border: dotted #3cc022;
 }
 
 .header-slider .header-slider-item {
@@ -686,11 +687,12 @@ h2 {
 /******** Product Item CSS ********/
 /**********************************/
 .product-item {
+    width: 100%;
     position: relative;
 }
 
 .product-item .product-title {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     background: #000000;
     transition: all .3s;
@@ -745,7 +747,7 @@ h2 {
 }
 
 .product-item .product-image img {
-    width: 100%; 
+    width: 80%; 
     transition: all .3s;
 }
 
@@ -762,7 +764,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 111, 97, .5);
+    background: rgba(255, 255, 255, 0.5);
     transition: all .3s;
     font-size: 0;
     z-index: 1;
