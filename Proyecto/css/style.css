@@ -104,7 +104,7 @@ h2 {
 
 .btn {
     color: #3cc022;
-    background: #ffffff;
+    background: #181818;
     border: 1px solid #3cc022;
 }
 
@@ -336,6 +336,7 @@ h2 {
     color: #666666;
     border: 2px solid #3cc022;
     border-radius: 4px;
+    background: #181818;
 }
 
 .bottom-bar .search button {
@@ -705,7 +706,7 @@ h2 {
 .product-item .product-title a,
 .product-item .product-title .ratting {
     position: relative;
-    width: 100%;
+    width: 0%;
 }
 
 .product-item .product-title a {
@@ -2212,7 +2213,7 @@ h2 {
 .login .login-form,
 .login .register-form {
     padding: 30px;
-    background: #0e0d0d;
+    background: #ffffff;
     margin-bottom: 30px;
     border: solid 3px #3cc022;
     color: #3da829;
