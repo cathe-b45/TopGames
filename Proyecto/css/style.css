@@ -592,7 +592,7 @@ h2 {
     flex-wrap: wrap;
     align-items: center;
     height: 100%;
-    max-height: 400px;
+    max-height: 200px;
     overflow: hidden;
     background: #ffffff;
 }
@@ -605,9 +605,6 @@ h2 {
     height: 250px;
 }
 
-.category .category-item.ch-150 {
-    height: 150px;
-}
 
 .category .category-item img {
     width: 100%; 
@@ -1892,6 +1889,7 @@ h2 {
     color: #ffffff;
     font-size: 30px;
     margin: 0;
+    font-family: 'Boogaloo', cursive;
 }
 
 .call-to-action a {
@@ -2213,7 +2211,7 @@ h2 {
 .login .login-form,
 .login .register-form {
     padding: 30px;
-    background: #ffffff;
+    background: #090909;
     margin-bottom: 30px;
     border: solid 3px #3cc022;
     color: #3da829;
