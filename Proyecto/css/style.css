@@ -2076,9 +2076,10 @@ h2 {
 
 .review .review-slider-item {
     display: flex;
+    color:#ffffff;
     align-items: center;
     flex-direction: row;
-    background: #ffffff;
+    background: #232323;
 }
 
 .review .review-img {
