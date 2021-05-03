@@ -9,6 +9,6 @@ import com.topGames.model.*;
  * utilizando la entidad alumno. Por ejemplo, devuelveme todos
  * los alumnos, insertame un nuevo alumno...
  */
-public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
+public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 
 }
