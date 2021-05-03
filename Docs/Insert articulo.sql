@@ -1,5 +1,4 @@
-INSERT INTO
-    `Articulos` (
+INSERT INTO `Articulos` (
         `ID_Articulo`,
         `Tipo`,
         `Nombre`,
@@ -8,8 +7,7 @@ INSERT INTO
         `Precio`,
         `Plataforma`
     )
-VALUES
-    (
+VALUES (
         '1',
         'videojuego',
         'Kingdom Hearts',
