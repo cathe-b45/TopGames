@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * sus atributos a una columna de esa misma tabla.
  */
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 	// Esta línea tiene que estar pero no nos interesa, se autogenera cuando
 	// implementamos Serializable

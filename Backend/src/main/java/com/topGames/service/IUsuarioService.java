@@ -9,6 +9,7 @@ import com.topGames.model.*;
 public interface IUsuarioService {
 	// Devuelve una lista con todos los alumnos de la BD
 	public List<Usuario> findAll();
+	
 	// Añade un nuevo ausuario en la BD
 	public boolean addUsuario(Usuario usuario);
 }

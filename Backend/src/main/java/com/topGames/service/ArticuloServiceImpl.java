@@ -3,10 +3,10 @@ package com.topGames.service;
 import java.util.List;
 
 import com.topGames.model.Articulo;
-import com.topGames.service.IArticuloService;
+import com.topGames.service.ArticulosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.topGames.model.*;
+import com.topGames.model.Articulo;
 import com.topGames.repository.*;
 /**
  * Servicio que trabaja y realiza consultas en la BD sobre los datos
@@ -15,29 +15,24 @@ import com.topGames.repository.*;
  * los métodos implementados de la interfaz.
  */
 @Service
-public class ArticuloServiceImpl implements IArticuloService {
+public class ArticuloServiceImpl implements ArticulosService {
 	
 	@Autowired
     private ArticuloRepository repository;
 	
 	@Override
 	public List<Articulo> findAll() {
-		/*
-		 * Ejecuta la consulta "select * from alumno".
-		 * Recuerda que repository implementaba la interfaz CrudRepository.
-		 * ¡Investiga qué consultas se pueden hacer de manera sencilla!
-		 */
 		return (List<Articulo>) repository.findAll();
+	}
+	
+	public List<Articulo> getArticulosSlider() {
+		return (List<Articulo>) repository.articulosSlider();
 	}
 
 	@Override
 	public boolean addArticulo(Articulo articulo) {
 		try {
-			/*
-			 * Ejecuta la consulta "insert alumno".
-			 * Recuerda que repository implementaba la interfaz CrudRepository.
-			 * ¡Investiga qué consultas se pueden hacer de manera sencilla!
-			 */
+			
 			repository.save(articulo);
 			return true;
 		} catch(Exception e) {

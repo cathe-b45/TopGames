@@ -2,7 +2,7 @@ package com.topGames.controller;
 
 
 import com.topGames.model.Articulo;
-import com.topGames.service.IArticuloService;
+import com.topGames.service.ArticulosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ControladorArticulos {
 
 	@Autowired
-    private IArticuloService articuloService;
+    private ArticulosService articuloService;
 	
 	/**
 	 * Las peticiones a la url "/" ejecutan la función operacionDeInicio, que carga
@@ -46,7 +46,7 @@ public class ControladorArticulos {
         model.addAttribute("articulos", articulos);
         
         // Hay que colocar el path completo de donde va a encontrar el index
-        return "/admin/usuarios/index";
+        return "/admin/articulos/index";
     }
 
     /**
@@ -58,8 +58,9 @@ public class ControladorArticulos {
      */
     @PostMapping(value = "/admin/articulo/agregar")
     public String agregarArticulo(@ModelAttribute Articulo articulo, Model model) {
-    	// Ejecuta la query "insert alumno"
+
         articuloService.addArticulo(articulo);
+        
         /*
          * Como explique en clase, una vez se ha añadido un nuevo alumno queremos
          * volver a cargar el index.html. Ya sabemos que este index necesita de una

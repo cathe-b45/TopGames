@@ -11,6 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS topgames;
+CREATE DATABASE topgames;
+USE topgames;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,23 +31,32 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `articulos`
 --
 
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 13-04-2021 a las 14:53:42
+-- Versión del servidor: 5.7.31
+-- Versión de PHP: 7.3.21
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 DROP TABLE IF EXISTS `articulos`;
 CREATE TABLE IF NOT EXISTS `articulos` (
   `ID_Articulo` int(11) NOT NULL,
   `Tipo` enum('videojuego','merchandasing') DEFAULT NULL,
   `Nombre` longtext,
   `Fecha_Lanzamiento` date DEFAULT NULL,
-  `Género` varchar(50) DEFAULT NULL,
+  `Genero` varchar(50) DEFAULT NULL,
   `Precio` double DEFAULT NULL,
   `Plataforma` mediumtext,
   PRIMARY KEY (`ID_Articulo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `articulos`
---
-
-INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `Género`, `Precio`, `Plataforma`) VALUES
+INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `Genero`, `Precio`, `Plataforma`) VALUES
 (1, 'videojuego', 'Kingdom Hearts', '2028-03-02', 'RPG', 17, 'PlayStation2'),
 (2, 'videojuego', 'Kingdom Hearts: Chain of Memories', '2011-11-04', 'RPG', 12, 'PlayStation 2'),
 (3, 'videojuego', 'Kingdom Hearts II', '2022-12-05', 'RPG', 15, ' PlayStation 2'),
@@ -63,7 +76,7 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 (17, 'videojuego', 'Resident Evil 2', '2025-01-19', 'Supervivencia, Gore', 11, 'PlayStation 4'),
 (18, 'videojuego', 'Dying Light', '2026-06-15', 'Supervivencia, Acción', 39, 'Xbox One'),
 (19, 'videojuego', 'Resident Evil 4', '2011-01-05', 'Supervivencia, Gore', 24, 'PlayStation 2'),
-(20, 'videojuego', 'The Witcher 3 Wild Hunt', '2018-05-15', 'RPG', 8, 'PS4, Xbox One, Pc'),
+(20, 'videojuego', 'the witcher 3 wild hunt', '2018-05-15', 'RPG', 8, 'PS4, Xbox One, Pc'),
 (21, 'merchandasing', 'Funko - Figura Disney - Kingdom Hearts - Goofy Halloween', NULL, NULL, 59, NULL),
 (22, 'merchandasing', 'MasTazas Kingdom Hearts A Taza Ceramica', NULL, NULL, 10, NULL),
 (23, 'merchandasing', 'Kingdom Hearts - Corazones del reino Póster', NULL, NULL, 11, NULL),
@@ -76,14 +89,8 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 (30, 'merchandasing', 'FIGURA NENDOROID WITCHER 3: GERALT', NULL, NULL, 70, NULL),
 (31, 'merchandasing', 'FIGURA QFIG HARRY POTTER: HERMIONE', NULL, NULL, 18, NULL),
 (32, 'merchandasing', 'VARITA HARRY POTTER: DUMBLEDORE', NULL, NULL, 30, NULL),
-(33, 'merchandasing', 'PELUCHE SUPER MARIO: MARIO TANOOKI 21CM', NULL, NULL, 18, NULL),
-(34, 'merchandasing', 'PELUCHE 21CM LINK ZELDA BOTW', NULL, NULL, 22, NULL),
-(35, 'merchandasing', 'PELUCHE POKEMON 21CM SURTIDO', NULL, NULL, 20, NULL),
-(36, 'merchandasing', 'CUADRO 3D HARRY POTTER: HARRY POTTER Y SIRIUS', NULL, NULL, 11, NULL),
-(37, 'merchandasing', 'CUADRO 3D PLAYSTATION SYMBOLS', NULL, NULL, 11, NULL),
-(38, 'merchandasing', 'MONOPOLY: AVENGERS', NULL, NULL, 40, NULL),
-(39, 'merchandasing', 'LIENZO SUPER MARIO BROS NES', NULL, NULL, 10, NULL),
-(40, 'merchandasing', 'MONOPOLY STRANGERS THINGS EDICIÓN COLECCIONISTA', NULL, NULL, 60, NULL);
+(33, 'merchandasing', 'PELUCHE SUPER MARIO: MARIO TANOOKI 21CM', NULL, NULL, 18, NULL);
+COMMIT;
 
 -- --------------------------------------------------------
 

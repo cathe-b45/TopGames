@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * sus atributos a una columna de esa misma tabla.
  */
 @Entity
-@Table(name = "Articulos")
+@Table(name = "articulos")
 public class Articulo implements Serializable {
 	// Esta línea tiene que estar pero no nos interesa, se autogenera cuando
 	// implementamos Serializable
@@ -33,7 +33,7 @@ public class Articulo implements Serializable {
     @Column(name = "Nombre")    
     private String nombre;
     
-    @Column(name = "Fecha")
+    @Column(name = "Fecha_Lanzamiento")
     private String fecha;
     
     @Column(name = "Genero")    
@@ -44,13 +44,27 @@ public class Articulo implements Serializable {
     
     @Column(name = "Plataforma")
     private String plataforma;
-   
+    
+    @Column(name = "Slider")
+    private Boolean slider;
+
+	@Column(name = "Oferta")
+    private Boolean oferta;
+    
+    @Column(name = "Popular")
+    private Boolean popular;
+    
+    @Column(name = "Image")
+    private String image;
     
     public Articulo() {
     	
     }
     
-    public Articulo(int id, String tipo, String nombre, String fecha, String genero, Double precio, String plataforma) {
+    public Articulo(int id, String tipo, String nombre, 
+    			String fecha, String genero, Double precio, 
+    			String plataforma, String image, Boolean slider,
+    			Boolean oferta, Boolean popular) {
     	this.id = id;
     	this.tipo = tipo;
     	this.nombre = nombre;
@@ -58,6 +72,10 @@ public class Articulo implements Serializable {
     	this.genero = genero;
     	this.precio = precio;
     	this.plataforma = plataforma;
+    	this.image = image;
+    	this.slider = slider;
+    	this.oferta = oferta;
+    	this.popular = popular;
     }
 
 	public int getId() {
@@ -116,6 +134,38 @@ public class Articulo implements Serializable {
 		this.plataforma = plataforma;
 	}
 
+	   
+    public Boolean getSlider() {
+		return slider;
+	}
+
+	public void setSlider(Boolean slider) {
+		this.slider = slider;
+	}
+
+	public Boolean getOferta() {
+		return oferta;
+	}
+
+	public void setOferta(Boolean oferta) {
+		this.oferta = oferta;
+	}
+
+	public Boolean getPopular() {
+		return popular;
+	}
+
+	public void setPopular(Boolean popular) {
+		this.popular = popular;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 }
 

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articulos` (
   `Tipo` enum('videojuego','merchandasing') DEFAULT NULL,
   `Nombre` longtext,
   `Fecha_Lanzamiento` date DEFAULT NULL,
-  `Género` varchar(50) DEFAULT NULL,
+  `Genero` varchar(50) DEFAULT NULL,
   `Precio` double DEFAULT NULL,
   `Plataforma` mediumtext,
   PRIMARY KEY (`ID_Articulo`)
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `articulos` (
 -- Volcado de datos para la tabla `articulos`
 --
 
-INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `Género`, `Precio`, `Plataforma`) VALUES
+INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `Genero`, `Precio`, `Plataforma`) VALUES
 (1, 'videojuego', 'Kingdom Hearts', '2028-03-02', 'RPG', 17, 'PlayStation2'),
 (2, 'videojuego', 'Kingdom Hearts: Chain of Memories', '2011-11-04', 'RPG', 12, 'PlayStation 2'),
 (3, 'videojuego', 'Kingdom Hearts II', '2022-12-05', 'RPG', 15, ' PlayStation 2'),
