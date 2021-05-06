@@ -25,9 +25,7 @@ public class ArticuloServiceImpl implements ArticulosService {
 		return (List<Articulo>) repository.findAll();
 	}
 	
-	public List<Articulo> getArticulosSlider() {
-		return (List<Articulo>) repository.articulosSlider();
-	}
+	
 
 	@Override
 	public boolean addArticulo(Articulo articulo) {
@@ -39,5 +37,12 @@ public class ArticuloServiceImpl implements ArticulosService {
 			System.out.println(e.toString());
 			return false;
 		}
+	}
+	
+	/**
+	 * Obtiene los artículos (videojuegos) para el slider
+	 */
+	public List<Articulo> getArticulosSlider() {
+		return (List<Articulo>) repository.articulosSlider();
 	}
 }

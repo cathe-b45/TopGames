@@ -54,7 +54,7 @@ public class Articulo implements Serializable {
     @Column(name = "Popular")
     private Boolean popular;
     
-    @Column(name = "Image")
+    @Column(name = "Imagen")
     private String image;
     
     public Articulo() {

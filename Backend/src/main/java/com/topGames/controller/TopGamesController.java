@@ -34,6 +34,7 @@ public class TopGamesController {
     	// Ejecutamos la query "select * from articulos" para obtener todos los artículos de la BD
         List<Articulo> articulos = (List<Articulo>) articuloService.findAll();
         
+        // Lista de articulos para el slider
         List<Articulo> articulosSlider =  (List<Articulo>) articuloService.getArticulosSlider();
         
         // Muestra por consola todos los artículos a modo de prueba
