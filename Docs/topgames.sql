@@ -49,7 +49,7 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 (7, 'videojuego', 'Kingdom Hearts Dream Drop Distance', '2012-03-12', 'RPG', 25, 'Nintendo 3DS', '', NULL, NULL, NULL),
 (8, 'videojuego', 'Kingdom Hearts 0.2 Birth by Sleep - A Fragmentary Passage', '2017-01-12', 'RPG', 12, 'Xbox One', '', NULL, NULL, NULL),
 (9, 'videojuego', 'Kingdom Hearts: Melody of Memory', '2020-10-14', 'RPG', 38, 'Nintendo Switch', '', NULL, NULL, NULL),
-(10, 'videojuego', 'Kingdom Hearts III', '2019-01-25', 'RPG', 69, 'PlayStation 4', '', NULL, NULL, NULL),
+(10, 'videojuego', 'Kingdom Hearts III', '2019-01-25', 'RPG', 69, 'PlayStation 4', 'kingdom-hearts-3.jpg', NULL, NULL, b'1'),
 (11, 'videojuego', 'NieR: Automata', '2017-02-23', 'RPG', 26, 'PlayStation 4', '', NULL, NULL, NULL),
 (12, 'videojuego', 'Minecraft', '2011-11-18', 'Aventura', 26, 'PC, XBO, PS3, PSV, PS4', '', NULL, NULL, NULL),
 (13, 'videojuego', 'Call of Duty: Modern Warfare', '2019-09-25', 'Shooter', 30, ' PlayStation 4, Xbox One, Microsoft Windows', '', NULL, NULL, NULL),
