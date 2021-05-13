@@ -40,10 +40,16 @@ h2 {
 /**********************************/
 /******** Slick CSS *********/
 /**********************************/
+
+.header-slider .header-slider-item {
+	max-height: 400px;
+    align-items: flex-start;
+    display: flex;
+}
+
 .slick-slide img {
     display: block;
-    max-width: 700px;
-    width: 700px;
+    width: 100%;
     max-height: 400px;
 }
 
