@@ -15,9 +15,10 @@ USE topgames;
 -- Estructura de tabla para la tabla `articulos`
 --
 
-CREATE TABLE `articulos` (
-  `ID_Articulo` int(11) NOT NULL,
-  `Tipo` enum('videojuego','merchandasing') DEFAULT NULL,
+DROP TABLE IF EXISTS `articulos`;
+CREATE TABLE IF NOT EXISTS `articulos` (
+  `ID_Articulo` int NOT NULL,
+  `Tipo` enum('videojuego','merchandising') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Nombre` longtext,
   `Fecha_Lanzamiento` date DEFAULT NULL,
   `Genero` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -26,7 +27,8 @@ CREATE TABLE `articulos` (
   `Imagen` varchar(128) DEFAULT NULL,
   `oferta` bit(1) DEFAULT NULL,
   `popular` bit(1) DEFAULT NULL,
-  `slider` bit(1) DEFAULT NULL
+  `slider` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`ID_Articulo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -34,8 +36,8 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `Genero`, `Precio`, `Plataforma`, `Imagen`, `oferta`, `popular`, `slider`) VALUES
-(1, 'videojuego', 'Kingdom Hearts', '2002-03-28', 'RPG', 17, 'PlayStation2', 'kingdom hearts1.jpg', NULL, NULL, NULL),
-(2, 'videojuego', 'Kingdom Hearts: Chain of Memories', '2004-11-04', 'RPG', 12, 'PlayStation 2', 'chain.jpg', NULL, NULL, NULL),
+(1, 'videojuego', 'Kingdom Hearts', '2002-03-28', 'RPG', 17, 'PlayStation2', 'kingdom-hearts-1.jpg', NULL, NULL, b'1'),
+(2, 'videojuego', 'Kingdom Hearts: Chain of Memories', '2004-11-04', 'RPG', 12, 'PlayStation 2', 'chain.jpg', NULL, NULL, b'1'),
 (3, 'videojuego', 'Kingdom Hearts II', '2005-12-05', 'RPG', 15, ' PlayStation 2', 'kh2.jpg', NULL, NULL, NULL),
 (4, 'videojuego', 'Kingdom Hearts 358/2 Days', '2009-05-20', 'RPG', 10, 'Nintendo DS', '358_2.jpg', NULL, NULL, NULL),
 (5, 'videojuego', 'Kingdom Hearts Birth by Sleep', '2010-01-09', 'RPG', 15, 'PlayStation 3', 'kingdom-hearts-birth-by-sleep-playstation-portable_48671.jpg', NULL, NULL, NULL),
@@ -54,26 +56,26 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 (18, 'videojuego', 'Dying Light', '2015-01-26', 'Supervivencia, Acción', 39, 'PlayStation 4, Xbox One, Microsoft Windows, GNU/Linux, Mac OS Classic', 'dyinglight.jpg', NULL, NULL, NULL),
 (19, 'videojuego', 'Resident Evil 4', '2005-01-11', 'Supervivencia, Gore', 24, 'PlayStation 2,PlayStation 4', 'Resident Evil 4.jpg', NULL, NULL, NULL),
 (20, 'videojuego', 'The witcher 3 wild hunt', '2015-05-18', 'ARPG Acción-Aventura', 8, 'Microsoft Windows,Xbox One, PlayStation 4\r\nNintendo Switch', 'the-witcher-3-wild-hunt-cover.jpg', NULL, NULL, NULL),
-(21, 'merchandasing', 'Funko - Figura Disney - Kingdom Hearts - Goofy Halloween', NULL, NULL, 59, NULL, 'goofyKH.jpg', NULL, NULL, NULL),
-(22, 'merchandasing', 'MasTazas Kingdom Hearts A Taza Ceramica', NULL, NULL, 10, NULL, 'tazaKH.jpg', NULL, NULL, NULL),
-(23, 'merchandasing', 'Kingdom Hearts - Corazones del reino Póster', NULL, NULL, 11, NULL, 'khPoster.jpg', NULL, NULL, NULL),
-(24, 'merchandasing', 'Call of Duty: Black Ops 4 Playing Cards', NULL, NULL, 23, NULL, 'codCartas.jpg', NULL, NULL, NULL),
-(25, 'merchandasing', 'Gorra New Era X Call of Duty: Modern Warfare Black 9Fifty - Eastern Faction', NULL, NULL, 33, NULL, 'codGorra.jpg', NULL, NULL, NULL),
-(26, 'merchandasing', 'Lamparas Minecraft - Edicion Especial', NULL, NULL, 20, NULL, 'Lampara-Minecraft.jpg', NULL, NULL, NULL),
-(27, 'merchandasing', 'NUEVO 3D Moda Unisex Resident Evil Leon Scott Kennedy Impreso Sudadera con capucha casual Sudaderas', NULL, NULL, 60, NULL, 'sudaderaREV.jpg', NULL, NULL, NULL),
-(28, 'merchandasing', 'FIGURA POP RESIDENT EVIL: LEON KENNEDY', NULL, NULL, 15, NULL, 'funko-pop-resindent-evil-leon-s-kennedy.jpg', NULL, NULL, NULL),
-(29, 'merchandasing', 'FIGURA POP RESIDENT EVIL: NEMESIS', NULL, NULL, 15, NULL, 'funko_nemesis.jpg', NULL, NULL, NULL),
-(30, 'merchandasing', 'FIGURA NENDOROID WITCHER 3: GERALT', NULL, NULL, 70, NULL, 'figuraTW3.jpg', NULL, NULL, NULL),
-(31, 'merchandasing', 'FIGURA QFIG HARRY POTTER: HERMIONE', NULL, NULL, 18, NULL, 'hermione.jpg', NULL, NULL, NULL),
-(32, 'merchandasing', 'VARITA HARRY POTTER: DUMBLEDORE', NULL, NULL, 30, NULL, 'varitaHP.jpg', NULL, NULL, NULL),
-(33, 'merchandasing', 'PELUCHE SUPER MARIO: MARIO TANOOKI 21CM', NULL, NULL, 18, NULL, 'peluche_Mario.jpg', NULL, NULL, NULL),
-(34, 'merchandasing', 'PELUCHE 21CM LINK ZELDA BOTW', NULL, NULL, 22, NULL, 'peluche_link.jpg', NULL, NULL, NULL),
-(35, 'merchandasing', 'PELUCHE POKEMON 21CM SURTIDO', NULL, NULL, 20, NULL, 'peluchePokemon.png', NULL, NULL, NULL),
-(36, 'merchandasing', 'CUADRO 3D HARRY POTTER: HARRY POTTER Y SIRIUS', NULL, NULL, 11, NULL, 'posterHarryPotter.jpg', NULL, NULL, NULL),
-(37, 'merchandasing', 'CUADRO 3D PLAYSTATION SYMBOLS', NULL, NULL, 11, NULL, '3DPS$.jpg', NULL, NULL, NULL),
-(38, 'merchandasing', 'MONOPOLY: AVENGERS', NULL, NULL, 40, NULL, 'monopoly.jpg', NULL, NULL, NULL),
-(39, 'merchandasing', 'LIENZO SUPER MARIO BROS NES', NULL, NULL, 10, NULL, 'lienzoSuperMarioBross.jpg', NULL, NULL, NULL),
-(40, 'merchandasing', 'MONOPOLY STRANGERS THINGS EDICION COLECCIONISTA', NULL, NULL, 60, NULL, 'monopoly_stranger.jpg', NULL, NULL, NULL),
+(21, 'merchandising', 'Funko - Figura Disney - Kingdom Hearts - Goofy Halloween', NULL, NULL, 59, NULL, 'goofyKH.jpg', NULL, NULL, NULL),
+(22, 'merchandising', 'MasTazas Kingdom Hearts A Taza Ceramica', NULL, NULL, 10, NULL, 'tazaKH.jpg', NULL, NULL, NULL),
+(23, 'merchandising', 'Kingdom Hearts - Corazones del reino Póster', NULL, NULL, 11, NULL, 'khPoster.jpg', NULL, NULL, NULL),
+(24, 'merchandising', 'Call of Duty: Black Ops 4 Playing Cards', NULL, NULL, 23, NULL, 'codCartas.jpg', NULL, NULL, NULL),
+(25, 'merchandising', 'Gorra New Era X Call of Duty: Modern Warfare Black 9Fifty - Eastern Faction', NULL, NULL, 33, NULL, 'codGorra.jpg', NULL, NULL, NULL),
+(26, 'merchandising', 'Lamparas Minecraft - Edicion Especial', NULL, NULL, 20, NULL, 'Lampara-Minecraft.jpg', NULL, NULL, NULL),
+(27, 'merchandising', 'NUEVO 3D Moda Unisex Resident Evil Leon Scott Kennedy Impreso Sudadera con capucha casual Sudaderas', NULL, NULL, 60, NULL, 'sudaderaREV.jpg', NULL, NULL, NULL),
+(28, 'merchandising', 'FIGURA POP RESIDENT EVIL: LEON KENNEDY', NULL, NULL, 15, NULL, 'funko-pop-resindent-evil-leon-s-kennedy.jpg', NULL, NULL, NULL),
+(29, 'merchandising', 'FIGURA POP RESIDENT EVIL: NEMESIS', NULL, NULL, 15, NULL, 'funko_nemesis.jpg', NULL, NULL, NULL),
+(30, 'merchandising', 'FIGURA NENDOROID WITCHER 3: GERALT', NULL, NULL, 70, NULL, 'figuraTW3.jpg', NULL, NULL, NULL),
+(31, 'merchandising', 'FIGURA QFIG HARRY POTTER: HERMIONE', NULL, NULL, 18, NULL, 'hermione.jpg', NULL, NULL, NULL),
+(32, 'merchandising', 'VARITA HARRY POTTER: DUMBLEDORE', NULL, NULL, 30, NULL, 'varitaHP.jpg', NULL, NULL, NULL),
+(33, 'merchandising', 'PELUCHE SUPER MARIO: MARIO TANOOKI 21CM', NULL, NULL, 18, NULL, 'peluche_Mario.jpg', NULL, NULL, NULL),
+(34, 'merchandising', 'PELUCHE 21CM LINK ZELDA BOTW', NULL, NULL, 22, NULL, 'peluche_link.jpg', NULL, NULL, NULL),
+(35, 'merchandising', 'PELUCHE POKEMON 21CM SURTIDO', NULL, NULL, 20, NULL, 'peluchePokemon.png', NULL, NULL, NULL),
+(36, 'merchandising', 'CUADRO 3D HARRY POTTER: HARRY POTTER Y SIRIUS', NULL, NULL, 11, NULL, 'posterHarryPotter.jpg', NULL, NULL, NULL),
+(37, 'merchandising', 'CUADRO 3D PLAYSTATION SYMBOLS', NULL, NULL, 11, NULL, '3DPS$.jpg', NULL, NULL, NULL),
+(38, 'merchandising', 'MONOPOLY: AVENGERS', NULL, NULL, 40, NULL, 'monopoly.jpg', NULL, NULL, NULL),
+(39, 'merchandising', 'LIENZO SUPER MARIO BROS NES', NULL, NULL, 10, NULL, 'lienzoSuperMarioBross.jpg', NULL, NULL, NULL),
+(40, 'merchandising', 'MONOPOLY STRANGERS THINGS EDICION COLECCIONISTA', NULL, NULL, 60, NULL, 'monopoly_stranger.jpg', NULL, NULL, NULL),
 (41, 'videojuego', 'New Super Mario Bros', '2006-04-25', 'Plataformas', 22, 'Nintendo DS, Wii U', 'newSuperMarioBros.jpg', NULL, NULL, NULL),
 (42, 'videojuego', 'Crash Bandicoot N. Sane Trilogy', '2017-06-30', 'Acción, Aventura, Plataformas', 19, 'PlayStation 4, Nintendo Switch, Xbox One, Microsoft Windows', 'crashBandicoot.jpg', NULL, NULL, NULL),
 (43, 'videojuego', 'Crash Bandicoot 4: It\'s About Time', '2020-09-16', 'Acción, Aventura, Plataformas', 69, 'PlayStation 4, PlayStation 5, Nintendo Switch, Xbox One, Xbox Series X y Series S, Microsoft Windows', 'crashBandicoot4.jpg', NULL, NULL, NULL),
@@ -124,17 +126,17 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 (88, 'videojuego', 'Alien: Isolation', '2014-10-06', 'Horror de supervivencia y sigilo', 10, 'PlayStation 4, Xbox One, Nintendo Switch, Microsoft Windows, Xbox 360, Mac OS, GNU/Linux, Mac OS Classic', 'alien_isolation.jpg', NULL, NULL, NULL),
 (89, 'videojuego', 'BioShock Infinite', '2013-03-26', 'FPS', 15, 'PlayStation 3, Xbox 360, Microsoft Windows, Mac OS Classic, GNU/Linux', 'bioshock_infinite.jpg', NULL, NULL, NULL),
 (90, 'videojuego', 'Just Dance 2021', '2021-11-12', 'Musical y Baile', 40, 'Nintendo Switch, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X y Series S', 'just_dance.webp', NULL, NULL, NULL),
-(91, 'merchandasing', 'COJÍN NINTENDO: COIN BOX 13CMS', NULL, NULL, 15, NULL, 'cojin nintendo.png', NULL, NULL, NULL),
-(92, 'merchandasing', 'PELUCHE 20 CM RATCHET & CLANK: CLANK', NULL, NULL, 7, NULL, 'clank.jpg', NULL, NULL, NULL),
-(93, 'merchandasing', 'PELUCHE 20 CM RATCHET & CLANK: RATCHET', NULL, NULL, 7, NULL, 'rachet.jpg', NULL, NULL, NULL),
-(94, 'merchandasing', 'PELUCHE MARIONETA NINTENDO: BOWSER JUNIOR', NULL, NULL, 20, NULL, 'bowserJunior.jpg', NULL, NULL, NULL),
-(95, 'merchandasing', 'CAMISETA NEGRA ROCKSTAR TALLA L', NULL, NULL, 7, NULL, 'rokstar.jpg', NULL, NULL, NULL),
-(96, 'merchandasing', 'CALCETINES DEATH STRANDING: DRIPS', NULL, NULL, 5, NULL, 'calcetiones_death.png', NULL, NULL, NULL),
-(97, 'merchandasing', 'CAMISETA ASSASSINÂ´S CREED VALHALLA - CREST GRID TALLA L', NULL, NULL, 15, NULL, 'camiseta_assassins.jpg', NULL, NULL, NULL),
-(98, 'merchandasing', 'SUDADERA PLAYSTATION TALLA M', NULL, NULL, 50, NULL, 'sudaderaps4.jpg', NULL, NULL, NULL),
-(99, 'merchandasing', 'GORRA RESIDENT EVIL S.T.A.R.S.', NULL, NULL, 16, NULL, 'gorra_resident_evil.jpg', NULL, NULL, NULL),
-(100, 'merchandasing', 'GORRA THE LEGEND OF ZELDA: HYRUKE', NULL, NULL, 15, NULL, 'gorra_zelda.jpg', NULL, NULL, NULL),
-(101, 'merchandasing', 'CHAQUETA BORDERLANDS 3: PSYCHO BOMBER TALLA XL', NULL, NULL, 80, NULL, 'chaqueta_borderlands3.jpg', NULL, NULL, NULL);
+(91, 'merchandising', 'COJÍN NINTENDO: COIN BOX 13CMS', NULL, NULL, 15, NULL, 'cojin nintendo.png', NULL, NULL, NULL),
+(92, 'merchandising', 'PELUCHE 20 CM RATCHET & CLANK: CLANK', NULL, NULL, 7, NULL, 'clank.jpg', NULL, NULL, NULL),
+(93, 'merchandising', 'PELUCHE 20 CM RATCHET & CLANK: RATCHET', NULL, NULL, 7, NULL, 'rachet.jpg', NULL, NULL, NULL),
+(94, 'merchandising', 'PELUCHE MARIONETA NINTENDO: BOWSER JUNIOR', NULL, NULL, 20, NULL, 'bowserJunior.jpg', NULL, NULL, NULL),
+(95, 'merchandising', 'CAMISETA NEGRA ROCKSTAR TALLA L', NULL, NULL, 7, NULL, 'rokstar.jpg', NULL, NULL, NULL),
+(96, 'merchandising', 'CALCETINES DEATH STRANDING: DRIPS', NULL, NULL, 5, NULL, 'calcetiones_death.png', NULL, NULL, NULL),
+(97, 'merchandising', 'CAMISETA ASSASSINÂ´S CREED VALHALLA - CREST GRID TALLA L', NULL, NULL, 15, NULL, 'camiseta_assassins.jpg', NULL, NULL, NULL),
+(98, 'merchandising', 'SUDADERA PLAYSTATION TALLA M', NULL, NULL, 50, NULL, 'sudaderaps4.jpg', NULL, NULL, NULL),
+(99, 'merchandising', 'GORRA RESIDENT EVIL S.T.A.R.S.', NULL, NULL, 16, NULL, 'gorra_resident_evil.jpg', NULL, NULL, NULL),
+(100, 'merchandising', 'GORRA THE LEGEND OF ZELDA: HYRUKE', NULL, NULL, 15, NULL, 'gorra_zelda.jpg', NULL, NULL, NULL),
+(101, 'merchandising', 'CHAQUETA BORDERLANDS 3: PSYCHO BOMBER TALLA XL', NULL, NULL, 80, NULL, 'chaqueta_borderlands3.jpg', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -142,11 +144,15 @@ INSERT INTO `articulos` (`ID_Articulo`, `Tipo`, `Nombre`, `Fecha_Lanzamiento`, `
 -- Estructura de tabla para la tabla `compras`
 --
 
-CREATE TABLE `compras` (
-  `ID_Articulo` int(11) DEFAULT NULL,
+DROP TABLE IF EXISTS `compras`;
+CREATE TABLE IF NOT EXISTS `compras` (
+  `ID_Articulo` int DEFAULT NULL,
   `Fecha` datetime NOT NULL,
   `Tipo_Articulo` enum('videojuego','merchandasing') DEFAULT NULL,
-  `ID_Usuario` int(11) DEFAULT NULL
+  `ID_Usuario` int DEFAULT NULL,
+  PRIMARY KEY (`Fecha`),
+  KEY `FK_Articulos_TO_Compras` (`ID_Articulo`),
+  KEY `FK_Usuario_TO_Compras` (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -155,10 +161,13 @@ CREATE TABLE `compras` (
 -- Estructura de tabla para la tabla `favoritos`
 --
 
-CREATE TABLE `favoritos` (
+DROP TABLE IF EXISTS `favoritos`;
+CREATE TABLE IF NOT EXISTS `favoritos` (
   `Tipo_Articulo` varchar(20) DEFAULT NULL,
-  `ID_Articulo` int(11) NOT NULL,
-  `ID_Usuario` int(11) NOT NULL
+  `ID_Articulo` int NOT NULL,
+  `ID_Usuario` int NOT NULL,
+  KEY `FK_Articulos_TO_Favoritos` (`ID_Articulo`),
+  KEY `FK_Usuario_TO_Favoritos` (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -167,8 +176,9 @@ CREATE TABLE `favoritos` (
 -- Estructura de tabla para la tabla `hibernate_sequence`
 --
 
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
+DROP TABLE IF EXISTS `hibernate_sequence`;
+CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
+  `next_val` bigint DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -184,13 +194,15 @@ INSERT INTO `hibernate_sequence` (`next_val`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `ID_Usuario` int(11) NOT NULL,
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `ID_Usuario` int NOT NULL,
   `Nombre` varchar(50) DEFAULT NULL,
   `Apellidos` varchar(50) DEFAULT NULL,
   `Contrasena` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `Tipo_Usuario` enum('CLIENTE','ADMIN') DEFAULT NULL
+  `Tipo_Usuario` enum('CLIENTE','ADMIN') DEFAULT NULL,
+  PRIMARY KEY (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -213,37 +225,6 @@ INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Apellidos`, `Contrasena`, `Email
 (13, 'Adrián', 'Muñoz Márquez', '11223344', 'adrianmuñozmarquez@gmail.com', 'CLIENTE'),
 (14, 'Daniela', 'Valencia García', '55667788', 'danielavalenciagarcia@gmail.com', 'CLIENTE'),
 (15, 'Angel', 'Pérez Martín', '777888999', 'angelperezmartin@gmail.com', 'CLIENTE');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `articulos`
---
-ALTER TABLE `articulos`
-  ADD PRIMARY KEY (`ID_Articulo`);
-
---
--- Indices de la tabla `compras`
---
-ALTER TABLE `compras`
-  ADD PRIMARY KEY (`Fecha`),
-  ADD KEY `FK_Articulos_TO_Compras` (`ID_Articulo`),
-  ADD KEY `FK_Usuario_TO_Compras` (`ID_Usuario`);
-
---
--- Indices de la tabla `favoritos`
---
-ALTER TABLE `favoritos`
-  ADD KEY `FK_Articulos_TO_Favoritos` (`ID_Articulo`),
-  ADD KEY `FK_Usuario_TO_Favoritos` (`ID_Usuario`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID_Usuario`);
 
 --
 -- Restricciones para tablas volcadas
