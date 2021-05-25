@@ -1,7 +1,7 @@
 package com.topGames.controller;
 
 import com.topGames.model.Articulo;
-import com.topGames.service.ArticulosService;
+import com.topGames.service.IArticulosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TopGamesController {
 
 	@Autowired
-	private ArticulosService articuloService;
+	private IArticulosService articuloService;
 	
 	/**
 	 * Las peticiones a la url "/" ejecutan la función operacionDeInicio, que carga

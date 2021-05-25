@@ -26,61 +26,53 @@
 
     <body>
         <!-- Top bar Start -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <i class="fa fa-envelope"></i>
-                        soporte@topgames.com
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="fa fa-phone-alt"></i>
-                        +34-976-111222
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Top bar End -->
+	    <div class="top-bar">
+	        <div class="container-fluid">
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <i class="fa fa-envelope"></i>
+	                    soporte@topgames.com
+	                </div>
+	                <div class="col-sm-6">
+	                    <i class="fa fa-phone-alt"></i>
+	                    +34-976-111222
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- Top bar End -->
         
         <!-- Nav Bar Start -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">prueba</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Videojuegos</a>
-                                <div class="dropdown-menu">
-                                    <a href="wishlist.html" class="dropdown-item">Ver por Género</a>
-                                    <a href="login.html" class="dropdown-item">Lo más vendido</a>
-                                    <a href="contact.html" class="dropdown-item"></a>
-                                </div>
-                            </div>
-                            <a href="product-detail.html" class="nav-item nav-link">Merchandising</a>
-                            
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contacto</a>                        
-                    </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta de usuario</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.html" class="dropdown-item">Iniciar sesión</a>
-                                    <a href="login.html" class="dropdown-item">Registro</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- Nav Bar End -->      
+	    <div class="nav">
+	        <div class="container-fluid">
+	            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	                <a href="#" class="navbar-brand">MENU</a>
+	                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	                    <span class="navbar-toggler-icon"></span>
+	                </button>
+	
+	                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+	                    <div class="navbar-nav mr-auto">
+	                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+	                        <div class="nav-item dropdown">
+	                            <a href="products.html" class="nav-item nav-link active">Productos</a>
+	                        </div>
+	                    </div>
+	                    <a href="contact.html" class="nav-item nav-link">Contacto</a>
+	                </div>
+	                <div class="navbar-nav ml-auto">
+	                    <div class="nav-item dropdown">
+	                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta de usuario</a>
+	                        <div class="dropdown-menu">
+	                            <a href="login.html" class="dropdown-item">Iniciar sesión</a>
+	                            <a href="login.html" class="dropdown-item">Registro</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </nav>
+	        </div>
+	    </div>
+	    <!-- Nav Bar End -->    
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
@@ -120,7 +112,7 @@
         <div class="header">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 d-flex align-items-center justiy-content-center">
+                    <div class="col-md-3 col-12 d-flex align-items-center justiy-content-center">
                         <nav class="navbar bg-light">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -141,10 +133,11 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-lg-4 col-md-6" th:if="${not #lists.isEmpty(articulosSlider)}">
+                    
+                    <div class="col-md-6 col-12" th:if="${not #lists.isEmpty(articulosSlider)}">
                         <div class="header-slider normal-slider">
                         	<div class="header-slider-item" th:each="articulo : ${articulosSlider}">
-                                <img th:src="@{images/videojuegos/}+${articulo.image}" />
+                                <img th:src="@{images/videojuego/}+${articulo.image}" />
                                 <div class="header-slider-caption">
                                     <p>Último lanzamiento</p>
                                     <p th:text="${articulo.nombre}"></p>
@@ -153,16 +146,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    
+                    <div class="col-md-3 col-12">
                         <div class="header-img">
                             <div class="img-item">
-                                <img src="img/category-1.jpg" />
+                                <img src="images/category-1.jpg" />
                                 <a class="img-text" href="">
                                  
                                 </a>
                             </div>
                             <div class="img-item">
-                                <img src="img/category-2.jpg" />
+                                <img src="images/category-2.jpg" />
                                 <a class="img-text" href="">
                              
                                 </a>
@@ -663,77 +657,77 @@ Vuelve a ser un need for speed divertido que intenta mezclar varios titulos ante
         <!-- Review End -->        
         
         <!-- Footer Start -->
-        <div class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <h2>Encuentranos</h2>
-                            <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>Calle Don Jaime I, Zaragoza</p>
-                                <p><i class="fa fa-envelope"></i>soporte@topgames.com</p>
-                                <p><i class="fa fa-phone"></i>+34-976-111222</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <h2>Redes Sociales</h2>
-                            <div class="contact-info">
-                                <div class="social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                    <a href=""><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <h2>Información</h2>
-                            <ul>
-                                <li><a href="#">Sobre la empresa</a></li>
-                                <li><a href="#">Política de privacidad</a></li>
-                                <li><a href="#">Términos y Condiciones</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <h2>Información de compra</h2>
-                            <ul>
-                                <li><a href="#">Política de pago</a></li>
-                                <li><a href="#">Politica de envios</a></li>
-                                <li><a href="#">Politica de devoluciones</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row payment align-items-center">
-                    <div class="col-md-6">
-                        <div class="payment-method">
-                            <h2>Aceptamos:</h2>
-                            <img src="img/payment-method.png" alt="Payment Method" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="payment-security">
-                            <h2>Seguridad con:</h2>
-                            <img src="img/godaddy.svg" alt="Payment Security" />
-                            <img src="img/norton.svg" alt="Payment Security" />
-                            <img src="img/ssl.svg" alt="Payment Security" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
+	    <div class="footer">
+	        <div class="container-fluid">
+	            <div class="row">
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="footer-widget">
+	                        <h2>Encuentranos</h2>
+	                        <div class="contact-info">
+	                            <p><i class="fa fa-map-marker"></i>Calle Don Jaime I, Zaragoza</p>
+	                            <p><i class="fa fa-envelope"></i>soporte@topgames.com</p>
+	                            <p><i class="fa fa-phone"></i>+34-976-111222</p>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="footer-widget">
+	                        <h2>Redes Sociales</h2>
+	                        <div class="contact-info">
+	                            <div class="social">
+	                                <a href=""><i class="fab fa-twitter"></i></a>
+	                                <a href=""><i class="fab fa-facebook-f"></i></a>
+	                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+	                                <a href=""><i class="fab fa-instagram"></i></a>
+	                                <a href=""><i class="fab fa-youtube"></i></a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="footer-widget">
+	                        <h2>Información</h2>
+	                        <ul>
+	                            <li><a href="#">Sobre la empresa</a></li>
+	                            <li><a href="#">Política de privacidad</a></li>
+	                            <li><a href="#">Términos y Condiciones</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="footer-widget">
+	                        <h2>Información de compra</h2>
+	                        <ul>
+	                            <li><a href="#">Política de pago</a></li>
+	                            <li><a href="#">Politica de envios</a></li>
+	                            <li><a href="#">Politica de devoluciones</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	
+	            <div class="row payment align-items-center">
+	                <div class="col-md-6">
+	                    <div class="payment-method">
+	                        <h2>Aceptamos:</h2>
+	                        <img src="img/payment-method.png" alt="Payment Method" />
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <div class="payment-security">
+	                        <h2>Seguridad con:</h2>
+	                        <img src="img/godaddy.svg" alt="Payment Security" />
+	                        <img src="img/norton.svg" alt="Payment Security" />
+	                        <img src="img/ssl.svg" alt="Payment Security" />
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- Footer End -->
         
         <!-- Footer Bottom Start -->
         <div class="footer-bottom">
