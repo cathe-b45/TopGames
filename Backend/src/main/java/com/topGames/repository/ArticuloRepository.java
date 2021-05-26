@@ -41,4 +41,25 @@ public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 	String queryAventuraPS = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%PlayStation%'";
 	@Query(value=queryAventuraPS, nativeQuery = true)
     List<Articulo> articulosVideojuegosAventuraPS();
+	
+	String queryAventuraNintendo = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%Nintendo%'";
+	@Query(value=queryAventuraNintendo, nativeQuery = true)
+    List<Articulo> articulosVideojuegosAventuraNintendo();
+	
+	String queryAventuraXbox = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%Xbox%'";
+	@Query(value=queryAventuraXbox, nativeQuery = true)
+    List<Articulo> articulosVideojuegosAventuraXbox();
+	
+	String queryRPGPS = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%PlayStation%'";
+	@Query(value=queryRPGPS, nativeQuery = true)
+    List<Articulo> articulosVideojuegosRPGPS();
+	
+	String queryRPGNintendo = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%Nintendo%'";
+	@Query(value=queryRPGNintendo, nativeQuery = true)
+    List<Articulo> articulosVideojuegosRPGNintendo();
+	
+	String queryRPGXbox = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%Xbox%'";
+	@Query(value=queryRPGXbox, nativeQuery = true)
+    List<Articulo> articulosVideojuegosRPGXbox();
+	
 }
