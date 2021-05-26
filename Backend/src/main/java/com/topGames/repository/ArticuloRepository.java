@@ -32,4 +32,20 @@ public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 	
 	@Query(value=queryByName + " Tipo = ?1 AND Genero = ?2", nativeQuery = true)
     List<Articulo> articulosFindBy(String tipoArticulo, String genero);
+	
+	String queryRPG = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg'";
+	@Query(value=queryRPG, nativeQuery = true)
+    List<Articulo> articulosVideojuegosRPG();
+	
+	String queryAccion = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%accion%'";
+	@Query(value=queryAccion, nativeQuery = true)
+    List<Articulo> articulosVideojuegosAccion();
+	
+	String queryAventura = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%'";
+	@Query(value=queryAventura, nativeQuery = true)
+    List<Articulo> articulosVideojuegosAventura();
+	
+	String queryAventuraPS = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%PlayStation%'";
+	@Query(value=queryAventuraPS, nativeQuery = true)
+    List<Articulo> articulosVideojuegosAventuraPS();
 }
