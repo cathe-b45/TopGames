@@ -63,4 +63,11 @@ public class ArticuloServiceImpl implements IArticulosService {
 	public List<Articulo> articulosFindByText(String text) {
 		return (List<Articulo>) repository.findByKeywords(text);
 	}
+	
+	/**
+	 * Obtiene los artículos buscando por varios parámetros
+	 */
+	public List<Articulo> articulosFindByText(String tipo, String genero, String plataforma) {
+		return (List<Articulo>) repository.articulosFindBy(tipo,genero,plataforma);
+	}
 }

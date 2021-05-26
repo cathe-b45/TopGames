@@ -26,12 +26,12 @@ public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 	@Query(value=query3, nativeQuery = true)
     List<Articulo> articulosMerchandising();
 	
-	String queryByName = "SELECT * FROM articulos WHERE ";
-	@Query(value=queryByName + " Nombre LIKE %?1%", nativeQuery = true)
+	String queryByName = "SELECT * FROM articulos WHERE 1=1 ";
+	@Query(value=queryByName + "AND Nombre LIKE %?1%", nativeQuery = true)
     List<Articulo> findByKeywords(String text);
 	
-	@Query(value=queryByName + " Tipo = ?1 AND Genero = ?2", nativeQuery = true)
-    List<Articulo> articulosFindBy(String tipoArticulo, String genero);
+	@Query(value=queryByName, nativeQuery = true)
+    List<Articulo> articulosFindBy(String tipo, String genero, String plataforma);
 	
 	String queryRPG = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg'";
 	@Query(value=queryRPG, nativeQuery = true)
