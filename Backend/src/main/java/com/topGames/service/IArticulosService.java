@@ -19,6 +19,9 @@ public interface IArticulosService {
 	// Devuelve una lista de los artículos de tipo MERCHANDISING
 	public List<Articulo> articulosMerchandising();
 	
+	// Devuelve una lista de los artículos buscando por el nombre del artículo
+	public List<Articulo> articulosFindByText(String text);
+	
 	// Añade un nuevo artículo en la BD
 	public boolean addArticulo(Articulo articulo);
 }

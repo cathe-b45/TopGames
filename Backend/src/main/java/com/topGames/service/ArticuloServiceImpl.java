@@ -56,4 +56,11 @@ public class ArticuloServiceImpl implements IArticulosService {
 	public List<Articulo> articulosMerchandising() {
 		return (List<Articulo>) repository.articulosMerchandising();
 	}
+	
+	/**
+	 * Obtiene los artículos buscando por texto
+	 */
+	public List<Articulo> articulosFindByText(String text) {
+		return (List<Articulo>) repository.findByKeywords(text);
+	}
 }

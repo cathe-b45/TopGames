@@ -35,16 +35,10 @@ public class ControladorArticulos {
     @GetMapping("/productos")
     public String getProductsPage(Model model, 
     		@RequestParam(value="videojuego", required = false) String videojuego,
-    		@RequestParam(value="merchandising", required = false) String merchandising
+    		@RequestParam(value="merchandising", required = false) String merchandising,
+    		@RequestParam(value="articuloName", required = false) String articuloName
     	) {
     	
-    	if(videojuego == null && merchandising == null) {
-    		// Lista de artículos de tipo videojuegos
-            List<Articulo> articulos = (List<Articulo>) articuloService.findAll();
-            
-            // Envía los artículos al html, para poder listarlos
-            model.addAttribute("articulos", articulos);
-    	} else {
     		
     		if(videojuego != null && videojuego.contains("true")) {
 
@@ -63,8 +57,27 @@ public class ControladorArticulos {
                 
                 // Envía los artículos al html, para poder listarlos
                 model.addAttribute("articulos", articulosMerchandising);
+                
+        	} else if(articuloName != null && articuloName.length() != 0) {
+        		
+        		System.out.println("articuloName: " + articuloName);
+        		
+        		// Lista de artículos de tipo merchandising
+                List<Articulo> articulosFindName = (List<Articulo>) articuloService.articulosFindByText(articuloName);
+                
+                System.out.println("articulosFinded"+articulosFindName.size());
+                
+                // Envía los artículos al html, para poder listarlos
+                model.addAttribute("articulos", articulosFindName);
+                
+        	} else {
+        		
+        		// Lista de artículos de tipo videojuegos
+                List<Articulo> articulos = (List<Articulo>) articuloService.findAll();
+                
+                // Envía los artículos al html, para poder listarlos
+                model.addAttribute("articulos", articulos);
         	}
-    	}
         
         // Hay que colocar el path completo de donde va a encontrar el index
         return "/products";
