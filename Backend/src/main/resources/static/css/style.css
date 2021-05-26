@@ -818,6 +818,16 @@ h2 {
     border: 1px solid #3cc022;
 }
 
+.product-item .product-details{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+
+.product-item:hover .product-details {
+    background: #3cc022;
+}
+    
 .product-item .product-price {
     padding: 20px;
     background: #000000;
@@ -855,6 +865,42 @@ h2 {
     margin-right: 5px;
 }
 
+.product-item .product-genre {
+    padding: 20px;
+    background: #000000;
+    transition: all .3s;
+}
+
+.product-item:hover .product-genre {
+    background: #3cc022;
+}
+
+.product-item .product-genre h3 {
+    display: inline-block;
+    color: #ffffff;
+    margin: 0;
+}
+
+.product-item .product-genre h3 span {
+    font-size: 16px;
+}
+
+.product-item .product-genre .btn {
+    float: right;
+    border: none;
+    color: #000000;
+    background: #3cc022;
+}
+
+.product-item:hover .product-genre .btn,
+.product-item .product-genre .btn:hover {
+    color: #3cc022;
+    background: #ffffff;
+}
+
+.product-item .product-genre .btn i {
+    margin-right: 5px;
+}
 
 /**********************************/
 /******** Featured Product ********/

@@ -67,7 +67,35 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos buscando por varios parámetros
 	 */
-	public List<Articulo> articulosFindByText(String tipo, String genero, String plataforma) {
-		return (List<Articulo>) repository.articulosFindBy(tipo,genero,plataforma);
+	public List<Articulo> articulosFindByTipoGenero(String tipo, String genero) {
+		return (List<Articulo>) repository.findByTipoAndGenero(tipo,genero);
+	}
+	
+	/**
+	 * Obtiene los artículos buscando por varios parámetros
+	 */
+	public List<Articulo> articulosFindByTipoPlataforma(String tipo, String plataforma) {
+		return (List<Articulo>) repository.findByTipoAndPlataforma(tipo,plataforma);
+	}
+	
+	/**
+	 * Obtiene todos los géneros de los artículos
+	 */
+	public List<String> getAllGeneros() {
+		return (List<String>) repository.getGeneros();
+	}
+	
+	/**
+	 * Obtiene todos las plataformas de los artículos
+	 */
+	public List<String> getAllPlataformas() {
+		return (List<String>) repository.getPlataformas();
+	}
+	
+	/**
+	 * Obtiene los artículos buscando por varios parámetros
+	 */
+	public List<Articulo> articulosFindByTipoGeneroPlataforma(String tipo, String genero, String plataforma) {
+		return (List<Articulo>) repository.findByTipoAndGeneroAndPlataforma(tipo,genero,plataforma);
 	}
 }

@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -31,10 +29,11 @@ public class ControladorArticulos {
 	 * 			- wwww.google.com/ (carga el index de google)
 	 * 			- www.facebook.com/ (carga el index de facebook)
 	 */
+	
 	// Path para la llamada a través de la URL
     @GetMapping("/productos")
     public String getProductsPage(Model model, 
-    		@RequestParam(value="videojuego", required = false) String videojuego,
+    		@RequestParam(value="tipo", required = false) String tipo,
     		@RequestParam(value="merchandising", required = false) String merchandising,
     		@RequestParam(value="articuloName", required = false) String articuloName,
     		@RequestParam(value="genero", required = false) String genero,
@@ -42,15 +41,36 @@ public class ControladorArticulos {
     	) {
     	
     		
-    		if(videojuego != null && videojuego.contains("true")) {
+    		if(tipo != null && tipo.contains("videojuego")) {
     			
-        		// Lista de artículos de tipo videojuegos
-                List<Articulo> articulosVideojuegos = (List<Articulo>) articuloService.articulosVideojuegos();
+    			List<Articulo> articulosVideojuegos;
+    					
+    			if(genero != null && genero.length() > 0) {
+    				
+    				if(plataforma != null && plataforma.length() > 0) {
+    					
+    					// Lista de artículos de tipo videojuegos
+    	                articulosVideojuegos = (List<Articulo>) 
+    	                		articuloService.articulosFindByTipoGeneroPlataforma(tipo,genero,plataforma);
+    				} else {
+
+    					// Lista de artículos de tipo videojuegos
+    					articulosVideojuegos = (List<Articulo>) 
+    							articuloService.articulosFindByTipoGenero(tipo, genero);
+    				}
+    			} else if(plataforma != null && plataforma.length() > 0) {
+    				// Lista de artículos de tipo videojuegos
+					articulosVideojuegos = (List<Articulo>) 
+							articuloService.articulosFindByTipoPlataforma(tipo, plataforma);
+    			} else {
+    				// Lista de artículos de tipo videojuegos
+					articulosVideojuegos = (List<Articulo>) articuloService.articulosVideojuegos();
+    			}
                 
-                // Envía los artículos al html, para poder listarlos
+                // Envía los artículos al html para poder listarlos
                 model.addAttribute("articulos", articulosVideojuegos);
                 
-        	} else if(merchandising != null && merchandising.contains("true")) {
+        	} else if(tipo != null && tipo.contains("merchandising")) {
         		
         		// System.out.println("merchandising: " + merchandising);
         		
@@ -80,6 +100,19 @@ public class ControladorArticulos {
                 // Envía los artículos al html, para poder listarlos
                 model.addAttribute("articulos", articulos);
         	}
+    		
+    		// Enviamos los datos recogidos por get para los select
+            model.addAttribute("getTipo", tipo);
+            model.addAttribute("getPlataforma", plataforma);
+            model.addAttribute("getGenero", genero);
+            
+            // Listado de generos
+            List<String> generos = articuloService.getAllGeneros();
+            model.addAttribute("generos", generos);
+            
+            // Listado de plataformas
+            List<String> plataformas = articuloService.getAllPlataformas();
+            model.addAttribute("plataformas", plataformas);
         
         // Hay que colocar el path completo de donde va a encontrar el index
         return "/products";

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.topGames.model.*;
 
@@ -27,46 +28,23 @@ public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
     List<Articulo> articulosMerchandising();
 	
 	String queryByName = "SELECT * FROM articulos WHERE 1=1 ";
-	@Query(value=queryByName + "AND Nombre LIKE %?1%", nativeQuery = true)
+	@Query(value=queryByName + " AND Nombre LIKE %?1%", nativeQuery = true)
     List<Articulo> findByKeywords(String text);
 	
-	@Query(value=queryByName, nativeQuery = true)
-    List<Articulo> articulosFindBy(String tipo, String genero, String plataforma);
-	
-	String queryRPG = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg'";
-	@Query(value=queryRPG, nativeQuery = true)
-    List<Articulo> articulosVideojuegosRPG();
-	
-	String queryAccion = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%accion%'";
-	@Query(value=queryAccion, nativeQuery = true)
-    List<Articulo> articulosVideojuegosAccion();
-	
-	String queryAventura = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%'";
-	@Query(value=queryAventura, nativeQuery = true)
-    List<Articulo> articulosVideojuegosAventura();
-	
-	String queryAventuraPS = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%PlayStation%'";
-	@Query(value=queryAventuraPS, nativeQuery = true)
-    List<Articulo> articulosVideojuegosAventuraPS();
-	
-	String queryAventuraNintendo = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%Nintendo%'";
-	@Query(value=queryAventuraNintendo, nativeQuery = true)
-    List<Articulo> articulosVideojuegosAventuraNintendo();
-	
-	String queryAventuraXbox = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like '%aventura%' and Plataforma like '%Xbox%'";
-	@Query(value=queryAventuraXbox, nativeQuery = true)
-    List<Articulo> articulosVideojuegosAventuraXbox();
-	
-	String queryRPGPS = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%PlayStation%'";
-	@Query(value=queryRPGPS, nativeQuery = true)
-    List<Articulo> articulosVideojuegosRPGPS();
-	
-	String queryRPGNintendo = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%Nintendo%'";
-	@Query(value=queryRPGNintendo, nativeQuery = true)
-    List<Articulo> articulosVideojuegosRPGNintendo();
-	
-	String queryRPGXbox = "SELECT * FROM articulos WHERE Tipo = 'videojuego' and genero like 'rpg' and Plataforma like '%Xbox%'";
-	@Query(value=queryRPGXbox, nativeQuery = true)
-    List<Articulo> articulosVideojuegosRPGXbox();
-	
+	// Buscaremos por tipo + genero
+    List<Articulo> findByTipoAndGenero(String tipo, String genero);
+    
+    // Buscaremos por tipo + plataforma
+    List<Articulo> findByTipoAndPlataforma(String tipo, String plataforma);
+    
+	// Buscaremos por tipo + genero + plataform
+    List<Articulo> findByTipoAndGeneroAndPlataforma(String tipo, String genero, String plataforma);
+    
+    // Seleccionamos todos los generos distintos
+    @Query(value="SELECT DISTINCT Genero FROM articulos WHERE Genero IS NOT NULL", nativeQuery = true)
+    List<String> getGeneros();
+    
+    // Seleccionamos todos los tipos de plataforma distintas
+    @Query(value="SELECT DISTINCT Plataforma FROM articulos WHERE Plataforma IS NOT NULL", nativeQuery = true)
+    List<String> getPlataformas();
 }
