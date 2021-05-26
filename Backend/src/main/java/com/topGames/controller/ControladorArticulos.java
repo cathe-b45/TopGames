@@ -36,12 +36,14 @@ public class ControladorArticulos {
     public String getProductsPage(Model model, 
     		@RequestParam(value="videojuego", required = false) String videojuego,
     		@RequestParam(value="merchandising", required = false) String merchandising,
-    		@RequestParam(value="articuloName", required = false) String articuloName
+    		@RequestParam(value="articuloName", required = false) String articuloName,
+    		@RequestParam(value="genero", required = false) String genero,
+    		@RequestParam(value="plataforma", required = false) String plataforma
     	) {
     	
     		
     		if(videojuego != null && videojuego.contains("true")) {
-
+    			
         		// Lista de artículos de tipo videojuegos
                 List<Articulo> articulosVideojuegos = (List<Articulo>) articuloService.articulosVideojuegos();
                 
