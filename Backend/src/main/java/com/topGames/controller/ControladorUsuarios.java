@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * El controlador recibe las peticiones y, dependiendo de la URL a la que
@@ -29,6 +30,24 @@ public class ControladorUsuarios {
 	 * 			- wwww.google.com/ (carga el index de google)
 	 * 			- www.facebook.com/ (carga el index de facebook)
 	 */
+	
+	@GetMapping("/login")
+    public String getUsuario(Model model, 
+    		@RequestParam(value="nombre", required = false) String nombre,
+    		@RequestParam(value="apellidos", required = false) String apellidos,
+    		@RequestParam(value="email", required = false) String email,
+    		@RequestParam(value="numero de telefono", required = false) int numero,
+    		@RequestParam(value="contraseña", required = false) String contrasena
+    	) {
+		model.addAttribute("getNombre", nombre);
+        model.addAttribute("getApellidos", apellidos);
+        model.addAttribute("getEmail", email);
+        model.addAttribute("getEmail", numero);
+        model.addAttribute("getEmail", contrasena);
+		return "/login";
+        
+	}
+	
 	// Path para la llamada a través de la URL
     @GetMapping("/admin/usuarios")
     public String operacionDeInicio(Model model) {

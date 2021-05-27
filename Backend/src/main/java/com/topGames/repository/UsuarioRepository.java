@@ -1,5 +1,8 @@
 package com.topGames.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import com.topGames.model.*;
 
@@ -10,5 +13,5 @@ import com.topGames.model.*;
  * los alumnos, insertame un nuevo alumno...
  */
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
-
+	
 }
