@@ -52,6 +52,77 @@ public class ControladorUsuarios {
         
 	}
 	
+	/**
+     * Esta petición se ejecuta cuando el usuario presiona sobre el botón "Agregar"
+     * del formulario del index.html. 
+     * El método agregarAlumno recibe todos los parámetros del formulario y los utiliza
+     * para añadir un nuevo alumno a la BD.
+     * Por último vuelve a cargar el index.html
+     * @throws SQLException 
+     * @throws ClassNotFoundException 
+     */
+    @PostMapping(value = "/login")
+    public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) throws SQLException, ClassNotFoundException {
+    	
+    	usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
+    	
+    	System.out.println("Email" + usuario.getEmail());
+    	
+        model.addAttribute("usuario", usuario);
+        
+        return "/index";
+    }
+	
+	@GetMapping("/register")
+    public String register() {	
+		return "/register";
+	}
+	
+	/**
+     * Esta petición se ejecuta cuando el usuario presiona sobre el botón "Agregar"
+     * del formulario del index.html. 
+     * El método agregarAlumno recibe todos los parámetros del formulario y los utiliza
+     * para añadir un nuevo alumno a la BD.
+     * Por último vuelve a cargar el index.html
+     * @throws SQLException 
+     * @throws ClassNotFoundException 
+     */
+    @PostMapping(value = "/register")
+    public String register(@ModelAttribute Usuario usuario, Model model) 
+    		throws SQLException, ClassNotFoundException {
+    	
+    	// usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
+    	
+    	System.out.println("Usuario: " + usuario.getEmail());
+    	
+    	// Ejecuta la query "insert usuario"
+        if(usuarioService.addUsuario(usuario)) {
+        	
+        	// Si el usuario se ha registrado lanzamos mensaje de OK
+        	model.addAttribute("userCreated","OK");
+        } else {
+        	
+        	// Si el usuario no se ha registrado lanzamos ERROR
+        	model.addAttribute("userCreated","ERROR");
+        }
+        
+        /*
+         * Como explique en clase, una vez se ha añadido un nuevo alumno queremos
+         * volver a cargar el index.html. Ya sabemos que este index necesita de una
+         * lista de usuariospara cargarse bien (la lista que mostramos), por lo tanto
+         * volvemos a solicitarla haciendo la query "select * from usuarios"
+         * y se la volvemos a mandar al index.html
+         */
+        /* List<Usuario> usuarios = (List<Usuario>) usuarioService.findAll();
+        System.out.println("Usuarios size = " + usuarios.size());
+        for(int i = 0; i < usuarios.size(); i++) {
+            System.out.println(usuarios.get(i).getId() + " - " + usuarios.get(i).getNombre());
+        }
+        
+        // model.addAttribute("usuarios", usuarios); */
+        
+        return "/register";
+    }
 	
 	// Path para la llamada a través de la URL
     @GetMapping("/admin/usuarios")
@@ -69,37 +140,6 @@ public class ControladorUsuarios {
         model.addAttribute("usuarios", usuarios);
         
         // Hay que colocar el path completo de donde va a encontrar el index
-        return "/index";
-    }
-
-    /**
-     * Esta petición se ejecuta cuando el usuario presiona sobre el botón "Agregar"
-     * del formulario del index.html. 
-     * El método agregarAlumno recibe todos los parámetros del formulario y los utiliza
-     * para añadir un nuevo alumno a la BD.
-     * Por último vuelve a cargar el index.html
-     * @throws SQLException 
-     * @throws ClassNotFoundException 
-     */
-    @PostMapping(value = "/login")
-    public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) throws SQLException, ClassNotFoundException {
-    	usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
-    	// Ejecuta la query "insert alumno"
-        usuarioService.addUsuario(usuario);
-        /*
-         * Como explique en clase, una vez se ha añadido un nuevo alumno queremos
-         * volver a cargar el index.html. Ya sabemos que este index necesita de una
-         * lista de usuariospara cargarse bien (la lista que mostramos), por lo tanto
-         * volvemos a solicitarla haciendo la query "select * from usuarios"
-         * y se la volvemos a mandar al index.html
-         */
-        List<Usuario> usuarios = (List<Usuario>) usuarioService.findAll();
-        System.out.println("Usuarios size = " + usuarios.size());
-        for(int i = 0; i < usuarios.size(); i++) {
-            System.out.println(usuarios.get(i).getId() + " - " + usuarios.get(i).getNombre());
-        }
-        model.addAttribute("usuarios", usuarios);
-        
         return "/index";
     }
 }

@@ -12,5 +12,6 @@ public interface IUsuarioService {
 	public List<Usuario> findAll();
 	
 	// Añade un nuevo ausuario en la BD
-	public void addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException;
+	public boolean addUsuario(Usuario usuario) 
+			throws SQLException, ClassNotFoundException;
 }

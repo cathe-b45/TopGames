@@ -45,30 +45,32 @@
         <div class="nav">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                     <div class="navbar-nav mr-auto">
-	                        <a href="/index" class="nav-item nav-link active">Inicio</a>
-	                        <div class="nav-item dropdown">
-	                            <a href="/productos" class="nav-item nav-link active">Productos</a>
-	                        </div>
+                	<div class="navbar-nav mr-auto">
+		                <a href="#" class="navbar-brand">MENU</a>
+		                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		                    <span class="navbar-toggler-icon"></span>
+		                </button>
+		            </div>
+	
+	               	<div class="navbar-nav mr-auto">
+	                	<a href="/" class="nav-item nav-link active">Inicio</a>
+	                    <div class="nav-item dropdown">
+	                        <a href="/productos" class="nav-item nav-link active">Productos</a>
 	                    </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <div class="dropdown-menu">
-                                    <a href="/login" class="dropdown-item">Iniciar sesión</a>
-                                    <a href="/login" class="dropdown-item">Registro</a>
-                                </div>
+	               	</div>
+	               	
+                  	<div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            <div class="dropdown-menu">
+                                <a href="/login" class="dropdown-item">Iniciar sesión</a>
+                                <a href="/register" class="dropdown-item">Registro</a>
                             </div>
                         </div>
-                    </div>
+                   	</div>
                 </nav>
             </div>
         </div>
-        <!-- Nav Bar End -->      
+        <!-- Nav Bar End -->     
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
@@ -91,52 +93,49 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Productos</a></li>
-                    <li class="breadcrumb-item active">Iniciar sesión y registro</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/productos">Productos</a></li>
+                    <li class="breadcrumb-item active">Registrarse</li>
                 </ul>
             </div>
         </div>
-        <!-- Breadcrumb End -->
-        <div class="col-md-6">
-            <div class="search">
-                <form action="./productos" method = "GET"> 
-                    <input type="text" name="articuloName" placeholder="Buscar...">
-                    <button><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
+        
         <!-- Login Start -->
         <div class="login">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">    
+                    <div class="col-lg-3 col-12"></div>
+                    <div class="col-lg-6 col-md-12">
                         <div class="register-form">
-                            <div class="row">
-								<form action="./login" method = "POST">
-								<input type="hidden" name="tipo" value="normal"/>
-	                                <div class="col-md-6">
+                        	<form action="/register" method = "POST">
+								
+                            	<div class="row">
+	                                <div class="col-12">
 	                                    <label>Nombre</label>
 	                                    <input class="form-control" name="nombre" type="text" placeholder="Nombre">
 	                                </div>
-	                                <div class="col-md-6">
+	                                
+	                                <div class="col-12">
 	                                    <label>Apellidos</label>
 	                                    <input class="form-control" name="apellidos" type="text" placeholder="Apellidos">
 	                                </div>
-	                                <div class="col-md-6">
+	                                
+	                                <div class="col-12">
 	                                    <label>E-mail</label>
 	                                    <input class="form-control" name="email" type="text" placeholder="E-mail">
 	                                </div>
-	                                <div class="col-md-6">
+	                                <div class="col-12">
 	                                    <label>Contraseña</label>
 	                                    <input class="form-control" name="contrasena" type="text" placeholder="Contraseña">
 	                                </div>
-	                                <div class="col-md-12">
+	                                
+	                                <div class="col-12">
 	                                    <button class="btn">Enviar</button>
 	                                </div>
-								</form>
-                            </div>
+                            	</div>
+							</form>
                         </div>
+                        <div class="col-lg-3 col-12"></div>
                     </div>
                 </div>
             </div>

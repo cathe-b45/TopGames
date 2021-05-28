@@ -23,17 +23,17 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	
 	 private static Connection connect = null;
 	    
-	    private static PreparedStatement preparedStatement = null;
-	    private static String host = "localhost:3306/topgames";
-	    
-	    /*
-	     * Almacena el resultado de las consultas en un dato de 
-	     * tipo ResultSet, que tiene sus propios métodos para trabajar
-	     * con las tablas y columnas.
-	     */
-	    private static ResultSet resultSet = null;
-	    final private static String user = "root";
-	    final private static String passwd = "12345678";
+    private static PreparedStatement preparedStatement = null;
+    private static String host = "localhost:3306/topgames";
+    
+    /*
+     * Almacena el resultado de las consultas en un dato de 
+     * tipo ResultSet, que tiene sus propios métodos para trabajar
+     * con las tablas y columnas.
+     */
+    private static ResultSet resultSet = null;
+    final private static String user = "root";
+    final private static String passwd = "";
 	    
 	
 	@Autowired
@@ -68,18 +68,28 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	}
 
 	@Override
-	public void addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException {
+	public boolean addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException {
+		
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
 		connect = DriverManager
 				.getConnection("jdbc:mysql://" + host + "?"
 						+ "user=" + user + "&password=" + passwd );
-		preparedStatement = connect.prepareStatement("INSERT INTO usuario values (null,?,?,?,?");
+		
+		System.out.println("Usuario add: "+usuario.getEmail());
+		
+		String insert = "INSERT INTO usuario(ID_Usuario,Nombre,Apellidos,Contrasena,Email,Tipo_Usuario) values (NULL,?,?,?,?,?)";
+		preparedStatement = connect.prepareStatement(insert);
+		
 		preparedStatement.setString(1, usuario.getNombre());
 		preparedStatement.setString(2, usuario.getApellidos());
 		preparedStatement.setString(3, usuario.getPassword());
-		preparedStatement.setString(3, usuario.getEmail());
-		preparedStatement.setString(3, "CLIENTE");
+		preparedStatement.setString(4, usuario.getEmail());
+		preparedStatement.setString(5, "CLIENTE");
 		
+		preparedStatement.executeUpdate();
+		
+		return true;
 	}
 	
 	public static Usuario getUsuarioByCorreo(String email) throws SQLException, ClassNotFoundException {

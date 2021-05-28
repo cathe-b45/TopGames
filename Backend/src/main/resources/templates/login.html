@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title>Registro e inicio de sesión</title>
+        <title>Inicio de sesión</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="eCommerce HTML Template Free Download" name="keywords">
         <meta content="eCommerce HTML Template Free Download" name="description">
@@ -45,30 +45,32 @@
         <div class="nav">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                     <div class="navbar-nav mr-auto">
-	                        <a href="/index" class="nav-item nav-link active">Inicio</a>
-	                        <div class="nav-item dropdown">
-	                            <a href="/productos" class="nav-item nav-link active">Productos</a>
-	                        </div>
+                	<div class="navbar-nav mr-auto">
+		                <a href="#" class="navbar-brand">MENU</a>
+		                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		                    <span class="navbar-toggler-icon"></span>
+		                </button>
+		            </div>
+	
+	               	<div class="navbar-nav mr-auto">
+	                	<a href="/" class="nav-item nav-link active">Inicio</a>
+	                    <div class="nav-item dropdown">
+	                        <a href="/productos" class="nav-item nav-link active">Productos</a>
 	                    </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <div class="dropdown-menu">
-                                    <a href="/login" class="dropdown-item">Iniciar sesión</a>
-                                    <a href="/register" class="dropdown-item">Registro</a>
-                                </div>
+	               	</div>
+	               	
+                  	<div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            <div class="dropdown-menu">
+                                <a href="/login" class="dropdown-item">Iniciar sesión</a>
+                                <a href="/register" class="dropdown-item">Registro</a>
                             </div>
                         </div>
-                    </div>
+                   	</div>
                 </nav>
             </div>
         </div>
-        <!-- Nav Bar End -->      
+        <!-- Nav Bar End -->
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
@@ -91,43 +93,36 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Productos</a></li>
-                    <li class="breadcrumb-item active">Iniciar sesión y registro</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/productos">Productos</a></li>
+                    <li class="breadcrumb-item active">Iniciar sesión</li>
                 </ul>
             </div>
         </div>
-        <!-- Breadcrumb End -->
         
         <!-- Login Start -->
         <div class="login">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">
+               		<div class="col-lg-3 col-12"></div>
+                    <div class="col-lg-6 col-md-12">
                         <div class="login-form">
-                            <div class="row">
                             <form action="./login" method = "POST">
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <label>E-mail / Usuario</label>
-                                    <input class="form-control" type="text" placeholder="E-mail / Usuario">
+                                    <input class="form-control w-100" type="text" placeholder="E-mail / Usuario">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <label>Contraseña</label>
-                                    <input class="form-control" type="text" placeholder="Contraseña">
+                                    <input class="form-control w-100" type="text" placeholder="Contraseña">
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Mantener sesión iniciada</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <button class="btn">Enviar</button>
                                 </div>
                              </form>
-                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-12"></div>
                 </div>
             </div>
         </div>

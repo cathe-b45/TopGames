@@ -19,11 +19,11 @@ public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 	@Query(value=querySlider, nativeQuery = true)
     List<Articulo> articulosSlider();
 	
-	String queryOfertas = "SELECT * FROM articulos WHERE ofertas = 1";
+	String queryOfertas = "SELECT * FROM articulos WHERE oferta = 1";
 	@Query(value=queryOfertas, nativeQuery = true)
     List<Articulo> articulosOfertas();
 	
-	String queryPopulares = "SELECT * FROM articulos WHERE populares = 1";
+	String queryPopulares = "SELECT * FROM articulos WHERE popular = 1";
 	@Query(value=queryPopulares, nativeQuery = true)
     List<Articulo> articulosPopulares();
 	
