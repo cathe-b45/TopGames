@@ -67,6 +67,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		return (List<Usuario>) repository.findAll();
 	}
 
+	/**
+	 * Guardamos el usuario persistiendo en la BBDD
+	 */
 	@Override
 	public boolean addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException {
 		
@@ -78,35 +81,53 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		
 		System.out.println("Usuario add: "+usuario.getEmail());
 		
-		String insert = "INSERT INTO usuario(ID_Usuario,Nombre,Apellidos,Contrasena,Email,Tipo_Usuario) values (NULL,?,?,?,?,?)";
-		preparedStatement = connect.prepareStatement(insert);
-		
-		preparedStatement.setString(1, usuario.getNombre());
-		preparedStatement.setString(2, usuario.getApellidos());
-		preparedStatement.setString(3, usuario.getPassword());
-		preparedStatement.setString(4, usuario.getEmail());
-		preparedStatement.setString(5, "CLIENTE");
-		
-		preparedStatement.executeUpdate();
-		
-		return true;
+		try {
+			String insert = "INSERT INTO usuario(Nombre,Apellidos,Contrasena,Email,Tipo_Usuario) values (?,?,?,?,?)";
+			preparedStatement = connect.prepareStatement(insert);
+			
+			preparedStatement.setString(1, usuario.getNombre());
+			preparedStatement.setString(2, usuario.getApellidos());
+			preparedStatement.setString(3, usuario.getContrasena());
+			preparedStatement.setString(4, usuario.getEmail());
+			preparedStatement.setString(5, "CLIENTE");
+			
+			preparedStatement.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			return false;
+		}
 	}
 	
-	public static Usuario getUsuarioByCorreo(String email) throws SQLException, ClassNotFoundException {
+	/**
+	 * Obtenemos el usuario a través del email
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public static Usuario loginUser(String email, String password) throws SQLException, ClassNotFoundException {
+		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		connect = DriverManager
 				.getConnection("jdbc:mysql://" + host + "?"
 						+ "user=" + user + "&password=" + passwd );
-		preparedStatement = connect.prepareStatement("SELECT * from usuario");
-		PreparedStatement preparedStatment = connect.prepareStatement("SELECT * from usuario where email like ?");
+		
+		PreparedStatement preparedStatment = connect.prepareStatement("SELECT * from usuario where email like ? AND contrasena = ?");
 		preparedStatment.setString(1, email);
+		preparedStatment.setString(2, password);
+		
 		resultSet = preparedStatment.executeQuery();
-		Usuario usuario = null;
+		
+		Usuario usuario = null;		
 		while(resultSet.next()) {
 			usuario = new Usuario(resultSet.getInt(1), resultSet.getString(2)
 					, resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),
 					resultSet.getString(6));
 		}
+		
 		return usuario;
 	}
 	

@@ -18,12 +18,23 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="lib/slick/slick.css" rel="stylesheet">
         <link href="lib/slick/slick-theme.css" rel="stylesheet">
-
+        
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
+    
+    	<div th:if="${userCreated ne null}" 
+    		class="mt-5 alert alert-success" role="alert">
+		  	<strong>OK!</strong> El usuario se ha creado correctamente
+		</div>
+		
+		<div th:if="${userError ne null}" 
+    		class="mt-5 alert alert-danger" role="alert">
+		  	<strong>ERROR!</strong> Ha habido un error al crear el usuario
+		</div>
+		
         <!-- Top bar Start -->
         <div class="top-bar">
             <div class="container-fluid">
@@ -42,35 +53,35 @@
         <!-- Top bar End -->
         
         <!-- Nav Bar Start -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                	<div class="navbar-nav mr-auto">
-		                <a href="#" class="navbar-brand">MENU</a>
-		                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-		                    <span class="navbar-toggler-icon"></span>
-		                </button>
-		            </div>
+	    <div class="nav">
+	        <div class="container-fluid">
+	            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	                <a href="#" class="navbar-brand">MENU</a>
+	                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	                    <span class="navbar-toggler-icon"></span>
+	                </button>
 	
-	               	<div class="navbar-nav mr-auto">
-	                	<a href="/" class="nav-item nav-link active">Inicio</a>
-	                    <div class="nav-item dropdown">
-	                        <a href="/productos" class="nav-item nav-link active">Productos</a>
+	                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+	                    <div class="navbar-nav mr-auto">
+	                        <a href="/" class="nav-item nav-link active">Inicio</a>
+	                        <div class="nav-item dropdown">
+	                            <a href="/productos" class="nav-item nav-link active">Productos</a>
+	                        </div>
 	                    </div>
-	               	</div>
-	               	
-                  	<div class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown">
-                            <div class="dropdown-menu">
-                                <a href="/login" class="dropdown-item">Iniciar sesión</a>
-                                <a href="/register" class="dropdown-item">Registro</a>
-                            </div>
-                        </div>
-                   	</div>
-                </nav>
-            </div>
-        </div>
-        <!-- Nav Bar End -->     
+	                </div>
+	                <div class="navbar-nav ml-auto">
+	                    <div class="nav-item dropdown">
+	                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta de usuario</a>
+	                        <div class="dropdown-menu">
+	                            <a href="/login" class="dropdown-item">Iniciar sesión</a>
+	                            <a href="/register" class="dropdown-item">Registro</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </nav>
+	        </div>
+	    </div>
+	    <!-- Nav Bar End -->     
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
@@ -196,21 +207,21 @@
                 </div>
                 
                 <div class="row payment align-items-center">
-                    <div class="col-md-6">
-                        <div class="payment-method">
-                            <h2>Aceptamos:</h2>
-                            <img src="img/payment-method.png" alt="Payment Method" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="payment-security">
-                            <h2>Securidad con:</h2>
-                            <img src="img/godaddy.svg" alt="Payment Security" />
-                            <img src="img/norton.svg" alt="Payment Security" />
-                            <img src="img/ssl.svg" alt="Payment Security" />
-                        </div>
-                    </div>
-                </div>
+	                <div class="col-md-6">
+	                    <div class="payment-method">
+	                        <h2>Aceptamos:</h2>
+	                        <img src="images/payment-method.png" alt="Payment Method" />
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <div class="payment-security">
+	                        <h2>Seguridad con:</h2>
+	                        <img src="images/godaddy.svg" alt="Payment Security" />
+	                        <img src="images/norton.svg" alt="Payment Security" />
+	                        <img src="images/ssl.svg" alt="Payment Security" />
+	                    </div>
+	                </div>
+	            </div>
             </div>
         </div>
         <!-- Footer End -->

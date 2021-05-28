@@ -121,6 +121,6 @@ public class ArticuloServiceImpl implements IArticulosService {
 	 */
 	@Override
 	public List<Articulo> getArticulosPopulares() {
-		return (List<Articulo>) repository.articulosOfertas();
+		return (List<Articulo>) repository.articulosPopulares();
 	}
 }

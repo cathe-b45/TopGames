@@ -58,7 +58,6 @@
 	                            <a href="/productos" class="nav-item nav-link active">Productos</a>
 	                        </div>
 	                    </div>
-	                    <a href="contact.html" class="nav-item nav-link">Contacto</a>
 	                </div>
 	                <div class="navbar-nav ml-auto">
 	                    <div class="nav-item dropdown">
@@ -136,34 +135,18 @@
                         </nav>
                     </div>
                     
-                    <div class="col-md-6">
-                    <div class="header-slider normal-slider">
-                        <div class="header-slider-item">
-                            <img src="images/videojuego/slider-1.jpg" alt="Slider Image" />
-                            <div class="header-slider-caption">
-                                <p>Último lanzamiento.</p></b>
-                                <p>Kingdom hearts 3 remasted</p>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
-                            </div>
-                        </div>
-                        <div class="header-slider-item">
-                            <img src="images/videojuego/slider-2.jpg" alt="Slider Image" />
-                            <div class="header-slider-caption">
-                                <p>¡Ya a la venta!</p>
-                                <p>Pokemon Snap</p>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
-                            </div>
-                        </div>
-                        <div class="header-slider-item">
-                            <img src="images/videojuego/slider-3.jpg" alt="Slider Image" />
-                            <div class="header-slider-caption">
-                                <p>¡Ya a la venta!</p>
-                                <p>Final Fantasy SY.VII</p>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="col-md-6 col-12" th:if="${not #lists.isEmpty(articulosSlider)}">
+                        <div class="header-slider normal-slider">
+                        	<div class="header-slider-item" th:each="articulo : ${articulosSlider}">
+                                <img th:src="@{images/videojuego/}+${articulo.image}" />
+                                <div class="header-slider-caption">
+                                    <p>Último lanzamiento</p>
+                                    <p th:text="${articulo.nombre}"></p>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
+                                </div>
+                        	</div>
+                    	</div>
+                	</div>
                     
                     <div class="col-md-3 col-12">
                         <div class="header-img">
@@ -234,131 +217,40 @@
                 </div>
             </div>
         </div>
-        <!-- Call to Action End -->       
-        
-        <!-- Featured Product Start -->
-    <div class="featured-product product">
-        <div class="container-fluid">
-            <div class="section-header">
-                <h1>Juegos populares</h1>
-            </div>
-            <div class="row align-items-center product-slider product-slider-4">
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Just Dance</a>
-                     
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                               <center><img src="images/videojuego/just_dance.webp" alt="Product Image"></center> 
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>29,95€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Minecraft</a>
-
-                         
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                               <center><img src="images/videojuego/minecraft.jpg" alt="Product Image"></center> 
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>27€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Horizon zero dawn</a>
-                          
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <center><img src="images/videojuego/horizon-zero-dawn.jpg" alt="Product Image"></center> 
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>20,73€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Gears Of War</a>
-                       
-                        
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                              <center> <img src="images/videojuego/gearsOfWar.jpg" alt="Product Image"></center> 
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>27,00€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">The biding of isaac</a>
-                           
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                               <center> <img src="images/videojuego/the-binding-of-isaac-afterbirth-cover.jpg" alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>49,00€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featured Product End -->     
+        <!-- Call to Action End --> 
+	    
+	    <!-- ARTICULOS POPULARES -->
+	    <div class="featured-product product">
+	        <div class="container-fluid" th:if="${not #lists.isEmpty(articulosPopulares)}">
+	            <div class="section-header">
+	                <h1>Juegos populares</h1>
+	            </div>
+	            <div class="row align-items-center product-slider product-slider-4">
+	                <div class="col-lg-3" th:each="articulo : ${articulosPopulares}">
+	                    <div class="product-item">
+	                        <div class="product-title">
+	                            <a href="#" th:text="${articulo.nombre}"></a>
+	                        </div>
+	                        <div class="product-image">
+	                            <a href="#">
+	                               	<center><img th:src="@{images/videojuego/}+${articulo.image}" /></center> 
+	                            </a>
+	                            <div class="product-action">
+	                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+	                                <a href="#"><i class="fa fa-heart"></i></a>
+	                                <a href="#"><i class="fa fa-search"></i></a>
+	                            </div>
+	                        </div>
+	                        <div class="product-price">
+	                            <h3>€ <a th:text="${articulo.precio}"></a></h3>
+	                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- ARTICULOS POPULARES -->    
         
         <!-- Newsletter Start -->
         <div class="newsletter">
@@ -378,127 +270,38 @@
         </div>
         <!-- Newsletter End -->        
         
-        <!-- Ofertas -->
-    <div class="recent-product product">
-        <div class="container-fluid">
-            <div class="section-header">
-                <h1>Ofertas</h1>
-            </div>
-            <div class="row align-items-center product-slider product-slider-4">
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">The Witcher</a>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                               <center><img src="images/videojuego/the-witcher-3-wild-hunt-cover.jpg" alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>20,00€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Jurassic Park</a>
-                        
-                            
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <center><img src="images/videojuego/jurassicPArk.jpg"alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>30,20€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Bioshock infinite</a>
-                            
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <center><img src="images/videojuego/bioshock_infinite.jpg" alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>18,70€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Killing Floor 2</a>
-                         
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <center><img src="images/videojuego/killing-floor-2.jpg" alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>20,00€</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Borderlands 2</a>
-                           
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <center><img src="images/videojuego/borderlands2.jpg" alt="Product Image"></center>
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3><span>€</span>25</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Recent Product End -->
+        <!-- ARTICULOS EN OFERTA -->
+	    <div class="featured-product product">
+	        <div class="container-fluid" th:if="${not #lists.isEmpty(articulosOfertas)}">
+	            <div class="section-header">
+	                <h1>Juegos populares</h1>
+	            </div>
+	            <div class="row align-items-center product-slider product-slider-5">
+	                <div class="col-lg-3" th:each="articulo : ${articulosOfertas}">
+	                    <div class="product-item">
+	                        <div class="product-title">
+	                            <a href="#" th:text="${articulo.nombre}"></a>
+	                        </div>
+	                        <div class="product-image">
+	                            <a href="#">
+	                               	<center><img th:src="@{images/videojuego/}+${articulo.image}" /></center> 
+	                            </a>
+	                            <div class="product-action">
+	                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+	                                <a href="#"><i class="fa fa-heart"></i></a>
+	                                <a href="#"><i class="fa fa-search"></i></a>
+	                            </div>
+	                        </div>
+	                        <div class="product-price">
+	                            <h3>€ <a th:text="${articulo.precio}"></a></h3>
+	                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- ARTICULOS POPULARES -->
         
         <!-- Review Start -->
         <div class="review">
@@ -630,15 +433,15 @@ Vuelve a ser un need for speed divertido que intenta mezclar varios titulos ante
 	                <div class="col-md-6">
 	                    <div class="payment-method">
 	                        <h2>Aceptamos:</h2>
-	                        <img src="img/payment-method.png" alt="Payment Method" />
+	                        <img src="images/payment-method.png" alt="Payment Method" />
 	                    </div>
 	                </div>
 	                <div class="col-md-6">
 	                    <div class="payment-security">
 	                        <h2>Seguridad con:</h2>
-	                        <img src="img/godaddy.svg" alt="Payment Security" />
-	                        <img src="img/norton.svg" alt="Payment Security" />
-	                        <img src="img/ssl.svg" alt="Payment Security" />
+	                        <img src="images/godaddy.svg" alt="Payment Security" />
+	                        <img src="images/norton.svg" alt="Payment Security" />
+	                        <img src="images/ssl.svg" alt="Payment Security" />
 	                    </div>
 	                </div>
 	            </div>

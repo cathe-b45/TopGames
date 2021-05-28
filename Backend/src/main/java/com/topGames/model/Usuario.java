@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
     private String apellidos;
     
     @Column(name = "Contrasena")
-    private String password;
+    private String contrasena;
     
     @Column(name = "Email")    
     private String email;
@@ -47,10 +47,11 @@ public class Usuario implements Serializable {
     	
     }
     
-    public Usuario(int id, String nombre, String apellidos, String password, String email, String tipoUsuario) {
+    public Usuario(int id, String nombre, String apellidos, String contrasena, String email, String tipoUsuario) {
     	this.id = id;
     	this.nombre = nombre;
-    	this.password = password;
+    	this.apellidos = apellidos;
+    	this.contrasena = contrasena;
     	this.email = email;
     	this.tipoUsuario = tipoUsuario;
     }
@@ -79,12 +80,12 @@ public class Usuario implements Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public String getEmail() {

@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `articulos`
 --
 
+DROP TABLE IF EXISTS articulos;
 CREATE TABLE `articulos` (
   `ID_Articulo` int(11) NOT NULL,
   `Tipo` enum('videojuego','merchandising') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,

@@ -36,20 +36,8 @@ public class ControladorUsuarios {
 	 */
 	
 	@GetMapping("/login")
-    public String getUsuario(Model model, 
-    		@RequestParam(value="nombre", required = false) String nombre,
-    		@RequestParam(value="apellidos", required = false) String apellidos,
-    		@RequestParam(value="email", required = false) String email,
-    		@RequestParam(value="numero", required = false) String numero,
-    		@RequestParam(value="contraseña", required = false) String contrasena
-    	) {
-		model.addAttribute("getNombre", nombre);
-        model.addAttribute("getApellidos", apellidos);
-        model.addAttribute("getEmail", email);
-        model.addAttribute("getNumero", numero);
-        model.addAttribute("getContrasena", contrasena);
-		return "/login";
-        
+    public String login() {
+		return "/login";        
 	}
 	
 	/**
@@ -62,15 +50,24 @@ public class ControladorUsuarios {
      * @throws ClassNotFoundException 
      */
     @PostMapping(value = "/login")
-    public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) throws SQLException, ClassNotFoundException {
+    public String login(
+    		@RequestParam(value="email", required = false) String email,
+    		@RequestParam(value="password", required = false) String password,
+    		Model model
+    	) throws ClassNotFoundException, SQLException {
     	
-    	usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
+    	if(email != null && email.length() > 0 && password != null && password.length() > 0) {
+    		Usuario usuario = UsuarioServiceImpl.loginUser(email, password);
+    		
+    		if(usuario != null) {
+        		System.out.println("Usuario: " + usuario.getEmail());
+        		
+        		// Si el usuario no se ha registrado lanzamos ERROR
+            	model.addAttribute("usuario", usuario);
+        	}
+    	}
     	
-    	System.out.println("Email" + usuario.getEmail());
-    	
-        model.addAttribute("usuario", usuario);
-        
-        return "/index";
+    	return "/login";
     }
 	
 	@GetMapping("/register")
@@ -79,11 +76,9 @@ public class ControladorUsuarios {
 	}
 	
 	/**
-     * Esta petición se ejecuta cuando el usuario presiona sobre el botón "Agregar"
-     * del formulario del index.html. 
-     * El método agregarAlumno recibe todos los parámetros del formulario y los utiliza
-     * para añadir un nuevo alumno a la BD.
-     * Por último vuelve a cargar el index.html
+     * Esta petición se ejecuta cuando el usuario presiona sobre el botón "Registrar"
+     * del formulario del /register
+     * 
      * @throws SQLException 
      * @throws ClassNotFoundException 
      */
@@ -93,7 +88,7 @@ public class ControladorUsuarios {
     	
     	// usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
     	
-    	System.out.println("Usuario: " + usuario.getEmail());
+    	System.out.println("Usuario: " + usuario.getContrasena());
     	
     	// Ejecuta la query "insert usuario"
         if(usuarioService.addUsuario(usuario)) {
@@ -103,7 +98,7 @@ public class ControladorUsuarios {
         } else {
         	
         	// Si el usuario no se ha registrado lanzamos ERROR
-        	model.addAttribute("userCreated","ERROR");
+        	model.addAttribute("userError","ERROR");
         }
         
         /*
