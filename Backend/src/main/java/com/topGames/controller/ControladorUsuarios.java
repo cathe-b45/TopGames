@@ -36,14 +36,14 @@ public class ControladorUsuarios {
     		@RequestParam(value="nombre", required = false) String nombre,
     		@RequestParam(value="apellidos", required = false) String apellidos,
     		@RequestParam(value="email", required = false) String email,
-    		@RequestParam(value="numero de telefono", required = false) int numero,
+    		@RequestParam(value="numero", required = false) String numero,
     		@RequestParam(value="contraseña", required = false) String contrasena
     	) {
 		model.addAttribute("getNombre", nombre);
         model.addAttribute("getApellidos", apellidos);
         model.addAttribute("getEmail", email);
-        model.addAttribute("getEmail", numero);
-        model.addAttribute("getEmail", contrasena);
+        model.addAttribute("getNumero", numero);
+        model.addAttribute("getContrasena", contrasena);
 		return "/login";
         
 	}
@@ -64,7 +64,7 @@ public class ControladorUsuarios {
         model.addAttribute("usuarios", usuarios);
         
         // Hay que colocar el path completo de donde va a encontrar el index
-        return "/admin/usuarios/index";
+        return "/index";
     }
 
     /**
@@ -74,7 +74,7 @@ public class ControladorUsuarios {
      * para añadir un nuevo alumno a la BD.
      * Por último vuelve a cargar el index.html
      */
-    @PostMapping(value = "/admin/usuarios/agregar")
+    @PostMapping(value = "/login")
     public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) {
     	// Ejecuta la query "insert alumno"
         usuarioService.addUsuario(usuario);
@@ -92,6 +92,6 @@ public class ControladorUsuarios {
         }
         model.addAttribute("usuarios", usuarios);
         
-        return "index";
+        return "/index";
     }
 }
