@@ -14,4 +14,6 @@ import com.topGames.model.*;
  */
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	
+	
+	
 }

@@ -2,6 +2,9 @@ package com.topGames.controller;
 
 import com.topGames.model.Usuario;
 import com.topGames.service.IUsuarioService;
+import com.topGames.service.UsuarioServiceImpl;
+
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ public class ControladorUsuarios {
 
 	@Autowired
     private IUsuarioService usuarioService;
+	private UsuarioServiceImpl usuarioSer;
 	
 	/**
 	 * Las peticiones a la url "/" ejecutan la función operacionDeInicio, que carga
@@ -48,6 +52,7 @@ public class ControladorUsuarios {
         
 	}
 	
+	
 	// Path para la llamada a través de la URL
     @GetMapping("/admin/usuarios")
     public String operacionDeInicio(Model model) {
@@ -73,9 +78,12 @@ public class ControladorUsuarios {
      * El método agregarAlumno recibe todos los parámetros del formulario y los utiliza
      * para añadir un nuevo alumno a la BD.
      * Por último vuelve a cargar el index.html
+     * @throws SQLException 
+     * @throws ClassNotFoundException 
      */
     @PostMapping(value = "/login")
-    public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) {
+    public String agregarAlumno(@ModelAttribute Usuario usuario, Model model) throws SQLException, ClassNotFoundException {
+    	usuario = UsuarioServiceImpl.getUsuarioByCorreo(usuario.getEmail());
     	// Ejecuta la query "insert alumno"
         usuarioService.addUsuario(usuario);
         /*

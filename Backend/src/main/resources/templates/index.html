@@ -53,7 +53,7 @@
 	
 	                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 	                    <div class="navbar-nav mr-auto">
-	                        <a href="/" class="nav-item nav-link active">Inicio</a>
+	                        <a href="/index" class="nav-item nav-link active">Inicio</a>
 	                        <div class="nav-item dropdown">
 	                            <a href="/productos" class="nav-item nav-link active">Productos</a>
 	                        </div>
@@ -65,7 +65,7 @@
 	                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta de usuario</a>
 	                        <div class="dropdown-menu">
 	                            <a href="/login" class="dropdown-item">Iniciar sesión</a>
-	                            <a href="/login" class="dropdown-item">Registro</a>
+	                            <a href="/register" class="dropdown-item">Registro</a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -85,10 +85,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                   <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+							<form action="./productos" method = "GET"> 
+	                            <input type="text" name="articuloName" placeholder="Buscar...">
+	                            <button><i class="fa fa-search"></i></button>
+							</form>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -134,18 +136,34 @@
                         </nav>
                     </div>
                     
-                    <div class="col-md-6 col-12" th:if="${not #lists.isEmpty(articulosSlider)}">
-                        <div class="header-slider normal-slider">
-                        	<div class="header-slider-item" th:each="articulo : ${articulosSlider}">
-                                <img th:src="@{images/videojuego/}+${articulo.image}" />
-                                <div class="header-slider-caption">
-                                    <p>Último lanzamiento</p>
-                                    <p th:text="${articulo.nombre}"></p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
-                                </div>
+                    <div class="col-md-6">
+                    <div class="header-slider normal-slider">
+                        <div class="header-slider-item">
+                            <img src="images/videojuego/slider-1.jpg" alt="Slider Image" />
+                            <div class="header-slider-caption">
+                                <p>Último lanzamiento.</p></b>
+                                <p>Kingdom hearts 3 remasted</p>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
+                            </div>
+                        </div>
+                        <div class="header-slider-item">
+                            <img src="images/videojuego/slider-2.jpg" alt="Slider Image" />
+                            <div class="header-slider-caption">
+                                <p>¡Ya a la venta!</p>
+                                <p>Pokemon Snap</p>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
+                            </div>
+                        </div>
+                        <div class="header-slider-item">
+                            <img src="images/videojuego/slider-3.jpg" alt="Slider Image" />
+                            <div class="header-slider-caption">
+                                <p>¡Ya a la venta!</p>
+                                <p>Final Fantasy SY.VII</p>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar ahora</a>
                             </div>
                         </div>
                     </div>
+                </div>
                     
                     <div class="col-md-3 col-12">
                         <div class="header-img">

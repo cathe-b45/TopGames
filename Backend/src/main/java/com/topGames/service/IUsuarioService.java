@@ -1,5 +1,6 @@
 package com.topGames.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import com.topGames.model.*;
 /**
@@ -11,5 +12,5 @@ public interface IUsuarioService {
 	public List<Usuario> findAll();
 	
 	// Añade un nuevo ausuario en la BD
-	public boolean addUsuario(Usuario usuario);
+	public void addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException;
 }
