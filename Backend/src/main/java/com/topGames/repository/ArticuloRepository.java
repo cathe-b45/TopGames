@@ -15,9 +15,17 @@ import com.topGames.model.*;
  */
 public interface ArticuloRepository extends CrudRepository<Articulo, Long> {
 	
-	String query = "SELECT * FROM articulos WHERE slider = 1";
-	@Query(value=query, nativeQuery = true)
+	String querySlider = "SELECT * FROM articulos WHERE slider = 1";
+	@Query(value=querySlider, nativeQuery = true)
     List<Articulo> articulosSlider();
+	
+	String queryOfertas = "SELECT * FROM articulos WHERE ofertas = 1";
+	@Query(value=queryOfertas, nativeQuery = true)
+    List<Articulo> articulosOfertas();
+	
+	String queryPopulares = "SELECT * FROM articulos WHERE populares = 1";
+	@Query(value=queryPopulares, nativeQuery = true)
+    List<Articulo> articulosPopulares();
 	
 	String query2 = "SELECT * FROM articulos WHERE Tipo = 'videojuego'";
 	@Query(value=query2, nativeQuery = true)

@@ -34,9 +34,6 @@ public class TopGamesController {
     	// Ejecutamos la query "select * from articulos" para obtener todos los artículos de la BD
         List<Articulo> articulos = (List<Articulo>) articuloService.findAll();
         
-        // Lista de articulos para el slider
-        List<Articulo> articulosSlider =  (List<Articulo>) articuloService.getArticulosSlider();
-        
         // Muestra por consola todos los artículos a modo de prueba
         System.out.println("Artículos size = " + articulosSlider.size());
         for(int i = 0; i < articulosSlider.size(); i++) {
@@ -45,7 +42,18 @@ public class TopGamesController {
         
         // Envía los artículos al html, para poder listarlos
         model.addAttribute("articulos", articulos);
+        
+        // Lista de articulos para el slider
+        List<Articulo> articulosSlider =  (List<Articulo>) articuloService.getArticulosSlider();
         model.addAttribute("articulosSlider", articulosSlider);
+        
+        // Lista de articulos de oferta
+        List<Articulo> articulosOfertas =  (List<Articulo>) articuloService.getArticulosOfertas();
+        model.addAttribute("articulosOfertas", articulosOfertas);
+        
+        // Lista de articulos de oferta
+        List<Articulo> articulosPopulares =  (List<Articulo>) articuloService.getArticulosPopulares();
+        model.addAttribute("articulosPopulares", articulosPopulares);
         
         // Hay que colocar el path completo de donde va a encontrar el index
         return "/index";

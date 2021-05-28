@@ -39,6 +39,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos (videojuegos) para el slider
 	 */
+	@Override
 	public List<Articulo> getArticulosSlider() {
 		return (List<Articulo>) repository.articulosSlider();
 	}
@@ -46,6 +47,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos (videojuegos)
 	 */
+	@Override
 	public List<Articulo> articulosVideojuegos() {
 		return (List<Articulo>) repository.articulosVideojuegos();
 	}
@@ -53,6 +55,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos (merchadising)
 	 */
+	@Override
 	public List<Articulo> articulosMerchandising() {
 		return (List<Articulo>) repository.articulosMerchandising();
 	}
@@ -60,6 +63,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos buscando por texto
 	 */
+	@Override
 	public List<Articulo> articulosFindByText(String text) {
 		return (List<Articulo>) repository.findByKeywords(text);
 	}
@@ -67,6 +71,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos buscando por varios parámetros
 	 */
+	@Override
 	public List<Articulo> articulosFindByTipoGenero(String tipo, String genero) {
 		return (List<Articulo>) repository.findByTipoAndGenero(tipo,genero);
 	}
@@ -74,6 +79,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos buscando por varios parámetros
 	 */
+	@Override
 	public List<Articulo> articulosFindByTipoPlataforma(String tipo, String plataforma) {
 		return (List<Articulo>) repository.findByTipoAndPlataforma(tipo,plataforma);
 	}
@@ -81,6 +87,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene todos los géneros de los artículos
 	 */
+	@Override
 	public List<String> getAllGeneros() {
 		return (List<String>) repository.getGeneros();
 	}
@@ -88,6 +95,7 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene todos las plataformas de los artículos
 	 */
+	@Override
 	public List<String> getAllPlataformas() {
 		return (List<String>) repository.getPlataformas();
 	}
@@ -95,7 +103,24 @@ public class ArticuloServiceImpl implements IArticulosService {
 	/**
 	 * Obtiene los artículos buscando por varios parámetros
 	 */
+	@Override
 	public List<Articulo> articulosFindByTipoGeneroPlataforma(String tipo, String genero, String plataforma) {
 		return (List<Articulo>) repository.findByTipoAndGeneroAndPlataforma(tipo,genero,plataforma);
+	}
+
+	/**
+	 * Obtiene los artículos de oferta
+	 */
+	@Override
+	public List<Articulo> getArticulosOfertas() {
+		return (List<Articulo>) repository.articulosOfertas();
+	}
+	
+	/**
+	 * Obtiene los artículos populares
+	 */
+	@Override
+	public List<Articulo> getArticulosPopulares() {
+		return (List<Articulo>) repository.articulosOfertas();
 	}
 }

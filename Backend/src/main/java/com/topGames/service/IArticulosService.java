@@ -14,6 +14,12 @@ public interface IArticulosService {
 	// Devuelve una lista de los artículos para mostrarlos en el SLIDER
 	public List<Articulo> getArticulosSlider();
 	
+	// Devuelve una lista de los artículos en oferta
+	public List<Articulo> getArticulosOfertas();
+	
+	// Devuelve una lista de los artículos populares
+	public List<Articulo> getArticulosPopulares();
+	
 	// Devuelve una lista de los artículos de tipo VIDEOJUEGOS
 	public List<Articulo> articulosVideojuegos();
 	
