@@ -1,5 +1,11 @@
 package com.topGames.service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +21,41 @@ import com.topGames.repository.*;
 @Service
 public class UsuarioServiceImpl implements IUsuarioService {
 	
+	 private static Connection connect = null;
+	    
+	    private static PreparedStatement preparedStatement = null;
+	    private static String host = "localhost:3306/topgames";
+	    
+	    /*
+	     * Almacena el resultado de las consultas en un dato de 
+	     * tipo ResultSet, que tiene sus propios métodos para trabajar
+	     * con las tablas y columnas.
+	     */
+	    private static ResultSet resultSet = null;
+	    final private static String user = "root";
+	    final private static String passwd = "12345678";
+	    
+	
 	@Autowired
     private UsuarioRepository repository;
+	
+	public static Connection dbConnect() throws Exception {
+        try {
+            /*
+             * Cargamos el driver MySQL que hemos descargado anteriormente.
+             * Cada BD tiene su propio driver, este �nicamente es para 
+             * las BD MySQL.
+             */
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            return DriverManager.getConnection("jdbc:mysql://" + host + "?"
+                    		+ "user=" + user + "&password=" + passwd );
+            
+        } catch (Exception e) {
+            throw e;
+        } finally {
+        }
+    }
 	
 	@Override
 	public List<Usuario> findAll() {
@@ -29,18 +68,38 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	}
 
 	@Override
-	public boolean addUsuario(Usuario usuario) {
-		try {
-			/*
-			 * Ejecuta la consulta "insert alumno".
-			 * Recuerda que repository implementaba la interfaz CrudRepository.
-			 * ¡Investiga qué consultas se pueden hacer de manera sencilla!
-			 */
-			repository.save(usuario);
-			return true;
-		} catch(Exception e) {
-			System.out.println(e.toString());
-			return false;
-		}
+	public void addUsuario(Usuario usuario) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		connect = DriverManager
+				.getConnection("jdbc:mysql://" + host + "?"
+						+ "user=" + user + "&password=" + passwd );
+		preparedStatement = connect.prepareStatement("INSERT INTO usuario values (null,?,?,?,?");
+		preparedStatement.setString(1, usuario.getNombre());
+		preparedStatement.setString(2, usuario.getApellidos());
+		preparedStatement.setString(3, usuario.getPassword());
+		preparedStatement.setString(3, usuario.getEmail());
+		preparedStatement.setString(3, "CLIENTE");
+		
 	}
+	
+	public static Usuario getUsuarioByCorreo(String email) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		connect = DriverManager
+				.getConnection("jdbc:mysql://" + host + "?"
+						+ "user=" + user + "&password=" + passwd );
+		preparedStatement = connect.prepareStatement("SELECT * from usuario");
+		PreparedStatement preparedStatment = connect.prepareStatement("SELECT * from usuario where email like ?");
+		preparedStatment.setString(1, email);
+		resultSet = preparedStatment.executeQuery();
+		Usuario usuario = null;
+		while(resultSet.next()) {
+			usuario = new Usuario(resultSet.getInt(1), resultSet.getString(2)
+					, resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),
+					resultSet.getString(6));
+		}
+		return usuario;
+	}
+	
+	
+	
 }

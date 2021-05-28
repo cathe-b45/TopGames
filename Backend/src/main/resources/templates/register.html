@@ -60,7 +60,7 @@
                             <div class="nav-item dropdown">
                                 <div class="dropdown-menu">
                                     <a href="/login" class="dropdown-item">Iniciar sesión</a>
-                                    <a href="/register" class="dropdown-item">Registro</a>
+                                    <a href="/login" class="dropdown-item">Registro</a>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             </a>
                         </div>
                     </div>
-         
+        
                 </div>
             </div>
         </div>
@@ -98,33 +98,43 @@
             </div>
         </div>
         <!-- Breadcrumb End -->
-        
+        <div class="col-md-6">
+            <div class="search">
+                <form action="./productos" method = "GET"> 
+                    <input type="text" name="articuloName" placeholder="Buscar...">
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
         <!-- Login Start -->
         <div class="login">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="login-form">
+                    <div class="col-lg-6">    
+                        <div class="register-form">
                             <div class="row">
-                            <form action="./login" method = "POST">
-                                <div class="col-md-6">
-                                    <label>E-mail / Usuario</label>
-                                    <input class="form-control" type="text" placeholder="E-mail / Usuario">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Contraseña</label>
-                                    <input class="form-control" type="text" placeholder="Contraseña">
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Mantener sesión iniciada</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn">Enviar</button>
-                                </div>
-                             </form>
+								<form action="./login" method = "POST">
+								<input type="hidden" name="tipo" value="normal"/>
+	                                <div class="col-md-6">
+	                                    <label>Nombre</label>
+	                                    <input class="form-control" name="nombre" type="text" placeholder="Nombre">
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <label>Apellidos</label>
+	                                    <input class="form-control" name="apellidos" type="text" placeholder="Apellidos">
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <label>E-mail</label>
+	                                    <input class="form-control" name="email" type="text" placeholder="E-mail">
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <label>Contraseña</label>
+	                                    <input class="form-control" name="contrasena" type="text" placeholder="Contraseña">
+	                                </div>
+	                                <div class="col-md-12">
+	                                    <button class="btn">Enviar</button>
+	                                </div>
+								</form>
                             </div>
                         </div>
                     </div>
